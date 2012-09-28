@@ -27,17 +27,20 @@ namespace FriendSmasher
     namespace Game
     {
         GameController::GameController(ViewController* vc, float fScaleFactor) :
+            m_viewController(vc),
             m_fDeltaTime(0.f),
             m_kGameState(kGAMESTATE_FRONTSCREEN_LOGGEDOUT),
             m_fScaleFactor(fScaleFactor),
             m_pBackgroundSprite(NULL),
             m_pLoginButtonSprite(NULL),
+            m_pWelcomePanel(NULL),
             m_pPlayButtonSprite(NULL),
             m_pChallengeButtonSprite(NULL),
             m_pBragButtonSprite(NULL),
             m_pUserImageSprite(NULL),
             m_pFriendImageSprite(NULL),
             m_pLoadingSprite(NULL),
+            m_pLoadingSpinner(NULL),
             m_pLogoSprite(NULL),
             m_pFriendTexture(NULL),
             m_nEntitiesSpawned(0),
@@ -48,12 +51,18 @@ namespace FriendSmasher
             m_kLossType(kUNDEFINED),
             m_pCelebLossEntity(NULL),
             m_pLogoutButtonSprite(NULL),
-            m_nPlayerFBID(0),
-            m_nNoSocialFriendCeleb(0)
+            m_confettiEffect(NULL),
+            m_uPlayerFBID(0),
+            m_nNoSocialFriendCeleb(0),
+            m_uFriendFBID(0)
         {
             for (int i=0; i<kMaxNumTouches; ++i) {
                 m_bTouchedLastFrame[i] = false;
                 m_bTouched[i] = false;
+            }
+            
+            for (int i=0; i<3; ++i) {
+                m_pRiserTextures[i] = NULL;
             }
             
             for (int i=0; i<10; ++i) {
@@ -64,41 +73,45 @@ namespace FriendSmasher
                 m_pHeartSprite[i] = NULL;
             }
                
-            m_labelName = [[UILabel alloc] initWithFrame:CGRectMake(135.0, 170.0, 220.0, 100.0)];
+            m_labelName = [[UILabel alloc] initWithFrame:CGRectMake(88.0, 36.0, 220.0, 100.0)];
             m_labelName.textAlignment = UITextAlignmentLeft;
-            m_labelName.textColor = [UIColor whiteColor];
+            m_labelName.textColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
             m_labelName.backgroundColor = [UIColor clearColor];
-            m_labelName.font = [UIFont fontWithName:@"Futura" size:(18.0)];
+            m_labelName.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(28.0)];
             [vc.view addSubview: m_labelName];
-            m_labelName.text = [NSString stringWithFormat:@"Hey: !"];
-            m_labelName.hidden = YES;
+            m_labelName.text = [NSString stringWithFormat:@"Welcome, Player"];
+            m_labelName.hidden = NO;
             
-            m_labelNameStatus = [[UILabel alloc] initWithFrame:CGRectMake(135.0, 190.0, 220.0, 100.0)];
+            m_labelNameStatus = [[UILabel alloc] initWithFrame:CGRectMake(90.0, 56.0, 220.0, 100.0)];
             m_labelNameStatus.textAlignment = UITextAlignmentLeft;
-            m_labelNameStatus.textColor = [UIColor whiteColor];
+            m_labelNameStatus.textColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
             m_labelNameStatus.backgroundColor = [UIColor clearColor];
-            m_labelNameStatus.font = [UIFont fontWithName:@"Futura" size:(15.0)];
+            m_labelNameStatus.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(15.0)];
             [vc.view addSubview: m_labelNameStatus];
             m_labelNameStatus.text = [NSString stringWithFormat:@"Let's smash some friends!"];
             m_labelNameStatus.hidden = YES;
             
-            m_labelFriendName = [[UILabel alloc] initWithFrame:CGRectMake(0.0, 2.0, 320.0, 20.0)];
-            m_labelFriendName.textAlignment = UITextAlignmentCenter;
-            m_labelFriendName.textColor = [UIColor whiteColor];
+            m_labelFriendName = [[UILabel alloc] initWithFrame:CGRectMake(6.0, 0.0, 640.0, 34.0)];
+            m_labelFriendName.textAlignment = UITextAlignmentLeft;
+            m_labelFriendName.textColor = [UIColor colorWithRed:0.89 green:0.29 blue:0.14 alpha:1.0];
             m_labelFriendName.backgroundColor = [UIColor clearColor];
-            m_labelFriendName.font = [UIFont fontWithName:@"Futura" size:(18.0)];
+            m_labelFriendName.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(28.0)];
             [vc.view addSubview: m_labelFriendName];
             m_labelFriendName.text = [NSString stringWithFormat:@""];
             m_labelFriendName.hidden = YES;
+            m_labelFriendName.shadowColor = [UIColor blackColor];
+            m_labelFriendName.shadowOffset = CGSizeMake(0,1);
             
-            m_labelScore = [[UILabel alloc] initWithFrame:CGRectMake(210.0, 2.0, 100.0, 20.0)];
+            m_labelScore = [[UILabel alloc] initWithFrame:CGRectMake(214.0, 6.0, 100.0, 20.0)];
             m_labelScore.textAlignment = UITextAlignmentRight;
             m_labelScore.textColor = [UIColor whiteColor];
             m_labelScore.backgroundColor = [UIColor clearColor];
-            m_labelScore.font = [UIFont fontWithName:@"Futura" size:(12.0)];
+            m_labelScore.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(20.0)];
             [vc.view addSubview: m_labelScore];
             m_labelScore.text = [NSString stringWithFormat:@"Score: 0"];
             m_labelScore.hidden = YES;
+            m_labelScore.shadowColor = [UIColor blackColor];
+            m_labelScore.shadowOffset = CGSizeMake(0,1);
             
         }
 
@@ -110,11 +123,18 @@ namespace FriendSmasher
             delete m_pUserImageSprite;
             delete m_pFriendImageSprite;
             delete m_pLoadingSprite;
+            delete m_pLoadingSpinner;
             delete m_pLogoSprite;
             delete m_pFriendTexture;
             delete m_pUserTexture;
             delete m_pChallengeButtonSprite;
             delete m_pBragButtonSprite;
+            delete m_pWelcomePanel;
+            delete m_confettiEffect;
+          
+            for (int i=0; i<3; ++i) {
+                delete m_pRiserTextures[i];
+            }
             
             for (int i=0; i<10; ++i) {
                 delete m_pNonFriendTexture[i];
@@ -136,53 +156,71 @@ namespace FriendSmasher
             m_pBackgroundSprite = new System::Sprite(pBackgroundTextureResource);
             
             System::TextureResource* pLogoTextureResource = new System::TextureResource();
-            pLogoTextureResource->CreateFromFile("Art/logo2.tga");
+            pLogoTextureResource->CreateFromFile("Art/logo.png");
             m_pLogoSprite = new System::Sprite(pLogoTextureResource);
-            m_pLogoSprite->SetPosition(Math::vec2(100.f, 60.f));
+            m_pLogoSprite->SetPosition(Math::vec2(0.f, 0.f));
+            m_pLogoSprite->SetLayer(10);
+            
+            
+            System::TextureResource* pWelcomePanelTextureResource = new System::TextureResource();
+            pWelcomePanelTextureResource->CreateFromFile("Art/welcome_panel.png");
+            m_pWelcomePanel = new System::Sprite(pWelcomePanelTextureResource);
+            m_pWelcomePanel->SetPosition(Math::vec2(0.f, 132.f));
+            m_pWelcomePanel->SetLayer(10);
+            
             
             System::TextureResource* pLoginButtonTextureResource = new System::TextureResource();
-            pLoginButtonTextureResource->CreateFromFile("Art/login_button.tga");
+            pLoginButtonTextureResource->CreateFromFile("Art/login_button.png");
             m_pLoginButtonSprite = new System::Sprite(pLoginButtonTextureResource);
-            m_pLoginButtonSprite->SetPosition(Math::vec2(160.f, 740.f));
+            m_pLoginButtonSprite->SetPosition(Math::vec2(110.f, 540.f));
             m_pLoginButtonSprite->SetLayer(10);
             
             System::TextureResource* pLogoutButtonTextureResource = new System::TextureResource();
-            pLogoutButtonTextureResource->CreateFromFile("Art/logout_button.tga");
+            pLogoutButtonTextureResource->CreateFromFile("Art/logout_button.png");
             m_pLogoutButtonSprite = new System::Sprite(pLogoutButtonTextureResource);
-            m_pLogoutButtonSprite->SetPosition(Math::vec2(160.f, 780.f));
+            m_pLogoutButtonSprite->SetPosition(Math::vec2(288.f, 862.f));
             m_pLogoutButtonSprite->SetLayer(10);
             m_pLogoutButtonSprite->SetDraw(false);
             
             
             System::TextureResource* pPlayButtonTextureResource = new System::TextureResource();
-            pPlayButtonTextureResource->CreateFromFile("Art/playnow_button.tga");
+            pPlayButtonTextureResource->CreateFromFile("Art/playnow_button.png");
             m_pPlayButtonSprite = new System::Sprite(pPlayButtonTextureResource);
             m_pPlayButtonSprite->SetDraw(false);
             m_pPlayButtonSprite->SetLayer(10);
-            m_pPlayButtonSprite->SetPosition(Math::vec2(160.f, 570.f));
+            m_pPlayButtonSprite->SetPosition(Math::vec2(252.f, 312.f));
             
             System::TextureResource* pChallengeButtonTextureResource = new System::TextureResource();
-            pChallengeButtonTextureResource->CreateFromFile("Art/challenge_button.tga");
+            pChallengeButtonTextureResource->CreateFromFile("Art/challenge_button.png");
             m_pChallengeButtonSprite = new System::Sprite(pChallengeButtonTextureResource);
             m_pChallengeButtonSprite->SetDraw(false);
             m_pChallengeButtonSprite->SetLayer(10);
-            m_pChallengeButtonSprite->SetPosition(Math::vec2(160.f, 640.f));        
+            m_pChallengeButtonSprite->SetPosition(Math::vec2(154.f, 614.f));
             
             
             System::TextureResource* pBragButtonTextureResource = new System::TextureResource();
-            pBragButtonTextureResource->CreateFromFile("Art/brag_button.tga");
+            pBragButtonTextureResource->CreateFromFile("Art/brag_button.png");
             m_pBragButtonSprite = new System::Sprite(pBragButtonTextureResource);
             m_pBragButtonSprite->SetDraw(false);
             m_pBragButtonSprite->SetLayer(10);
-            m_pBragButtonSprite->SetPosition(Math::vec2(160.f, 710.f));   
+            m_pBragButtonSprite->SetPosition(Math::vec2(0.f, 738.f));
             
             
             System::TextureResource* pLoadingTextureResource = new System::TextureResource();
-            pLoadingTextureResource->CreateFromFile("Art/isloading.tga");
+            pLoadingTextureResource->CreateFromFile("Art/isloading.png");
             m_pLoadingSprite = new System::Sprite(pLoadingTextureResource);
             m_pLoadingSprite->SetDraw(false);
             m_pLoadingSprite->SetLayer(10);
-            m_pLoadingSprite->SetPosition(Math::vec2(230.f, 600.f));
+            m_pLoadingSprite->SetPosition(Math::vec2(210.f, 460.f));
+            
+            System::TextureResource* pLoadingSpinnerTextureResource = new System::TextureResource();
+            pLoadingSpinnerTextureResource->CreateFromFile("Art/loadingspinner.tga");
+            m_pLoadingSpinner = new System::Sprite(pLoadingSpinnerTextureResource);
+            m_pLoadingSpinner->SetDraw(false);
+            m_pLoadingSpinner->SetLayer(10);
+            m_pLoadingSpinner->SetPivot(Math::vec2(m_pLoadingSpinner->GetWidth()*0.5f, m_pLoadingSpinner->GetHeight()*0.5f));
+            m_pLoadingSpinner->SetPosition(Math::vec2(274.f, 504.f));
+            
             
             System::TextureResource* pHeartTextureResource = new System::TextureResource();
             pHeartTextureResource->CreateFromFile("Art/heart_red.tga");
@@ -192,8 +230,7 @@ namespace FriendSmasher
                 m_pHeartSprite[i] = new System::Sprite(pHeartTextureResource);
                 m_pHeartSprite[i]->SetDraw(false);
                 m_pHeartSprite[i]->SetLayer(20 + i);
-                m_pHeartSprite[i]->SetScale(Math::vec2(0.6f, 0.6f));
-                m_pHeartSprite[i]->SetPosition(Math::vec2(20.f + (80.f * static_cast<float>(i)), 40.f));
+                m_pHeartSprite[i]->SetPosition(Math::vec2(10.f + (72.f * static_cast<float>(i)), 60.f));
             }
                  
             for (int i=0; i<10; ++i)
@@ -203,13 +240,48 @@ namespace FriendSmasher
                 sprintf(buf, "nonfriend_%d.png", i+1);
                 m_pNonFriendTexture[i]->CreateFromFile(buf);
             }
+                        
+            m_pRiserTextures[0] = new System::TextureResource();
+            m_pRiserTextures[0]->CreateFromFile("Art/plus_1.tga");
+            
+            m_pRiserTextures[1] = new System::TextureResource();
+            m_pRiserTextures[1]->CreateFromFile("Art/plus_2.tga");
+            
+            m_pRiserTextures[2] = new System::TextureResource();
+            m_pRiserTextures[2]->CreateFromFile("Art/plus_3.tga");
+                        
+            m_confettiEffect = ConfettiEffect::Create( 256 );
+			m_confettiEffect->SetMaxParticlesPerFrame( 256 );
+			m_confettiEffect->SetMinPosition( Math::vec3( 0.0f, 0.0f, -900.0f ) );
+			m_confettiEffect->SetMaxPosition( Math::vec3( 0.0f, 0.0f, -900.0f ) );
+			m_confettiEffect->SetMinStartVelocity( Math::vec3( -400.0f, -400.0f, -80.0f ) );
+			m_confettiEffect->SetMaxStartVelocity( Math::vec3( 400.0f,  400.0f,  -80.0f ) );
+			m_confettiEffect->SetFaceCamera( false );
+            m_confettiEffect->SetMinStartScale( 4.0f );
+            m_confettiEffect->SetMaxStartScale( 12.0f );
+            m_confettiEffect->SetMinDamping( 0.95f );
+            m_confettiEffect->SetMaxDamping( 0.99f );
+            m_confettiEffect->SetMinRotationDelta(  1.0f );
+            m_confettiEffect->SetMaxRotationDelta( 10.0f );
+            m_confettiEffect->SetGravity( Math::vec3( 0.0f, 0.f, 40.0f ) );
+            
+            static Math::vec3 colours[] =
+            {
+                Math::vec3( 1.0f, 0.2f,  0.0f ),
+                Math::vec3( 1.0f, 0.5f,  0.0f ),
+                Math::vec3( 1.0f, 0.7f,  0.0f ),
+                Math::vec3( 1.0f, 0.3f,  0.0f ),
+                Math::vec3( 0.0f, 0.0f,  0.0f ),
+            };
+            
+            unsigned int num_colours = sizeof(colours) / sizeof(colours[0]);
+            
+            m_confettiEffect->SetColours( colours, num_colours );
             
             
             FB_CreateNewSession();
             
-            AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-            
-            if (appDelegate.session.state == FBSessionStateCreatedTokenLoaded) {
+            if ([FBSession activeSession].state == FBSessionStateCreatedTokenLoaded) {
                 FB_Login();
                 
             }
@@ -227,6 +299,21 @@ namespace FriendSmasher
         void GameController::OnRender()
         {
             System::Graphics::Instance()->Update();
+            
+            static float fov		= 45.0f;
+            static float fAspect	= 0.67f;
+            static float fNearClip  = 1.0f;
+            static float fFarClip	= 1000.0f;
+            
+            Math::mtx44 viewMat;
+            Math::mtx44 projMat;
+            
+            mtx44MakeIdentity(viewMat);
+            
+            mtx44MakePerspectiveRH( projMat, fov, fAspect, fNearClip, fFarClip );
+            
+			m_confettiEffect->Render(viewMat, projMat);
+            
         }
         
         void GameController::OnUpdate()
@@ -237,9 +324,7 @@ namespace FriendSmasher
                                     
                     if (m_pLoginButtonSprite->IsPointInside(m_vEndTouchPos[0], 25.f)) 
                     {
-                        AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-                        
-                        if (!appDelegate.session.isOpen) {
+                        if (![FBSession activeSession].isOpen) {
                             
                             FB_CreateNewSession();
                             FB_Login();
@@ -254,14 +339,15 @@ namespace FriendSmasher
                     m_pUserImageSprite = new System::Sprite(m_pUserTexture);
                     m_pUserImageSprite->SetLayer(10);
                     m_pUserImageSprite->SetPivot(Math::vec2(m_pUserImageSprite->GetWidth()*0.5f, m_pUserImageSprite->GetHeight()*0.5f));
-                    m_pUserImageSprite->SetPosition(Math::vec2(180.f, 470.f));
+                    m_pUserImageSprite->SetPosition(Math::vec2(85.f, 217.f));
+                    m_pUserImageSprite->SetScale(Math::vec2(0.58f, 0.58f));
                     
-                    m_labelName.text = [NSString stringWithFormat:@"Welcome, %@!", m_nsstrUserName];
-                    m_labelName.hidden = NO;
+                    m_labelName.text = [NSString stringWithFormat:@"Welcome, %@", m_nsstrUserName];
                     
                     m_labelNameStatus.hidden = NO;
                     
                     m_pPlayButtonSprite->SetDraw(true);
+                    m_pWelcomePanel->SetDraw(true);
                     m_pLogoutButtonSprite->SetDraw(true);
                                         
                     m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_READY;
@@ -297,9 +383,12 @@ namespace FriendSmasher
           
             else if (m_kGameState == kGAMESTATE_FRONTSCREEN_NOSOCIAL_LOADING || m_kGameState == kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING)
             {
+                m_pLoadingSpinner->SetRotation(m_pLoadingSpinner->GetRotation() + 0.25f);
+                
                 if (m_pFriendTexture && m_pFriendTexture->GetIsReady())
                 {
                     m_pLoadingSprite->SetDraw(false);
+                    m_pLoadingSpinner->SetDraw(false);
                     m_pLogoSprite->SetDraw(false);
                     
                     m_uCurrentScore = 0;
@@ -338,6 +427,8 @@ namespace FriendSmasher
                     m_fSpawnTimer = 0.7;
                 }
                                
+                int nFrameScore = 0;
+                
                 std::vector<EntityInstance*>::iterator itr = m_vecEntities.begin();
                 std::vector<EntityInstance*>::iterator end = m_vecEntities.end();
                 for (; itr != end; ++itr)
@@ -369,22 +460,21 @@ namespace FriendSmasher
                             m_pCelebLossEntity->pSprite->SetLayer(m_nEntitiesSpawned + 100);
                             m_kLossType = kLOSSTYPE_HITCELEB;
                             m_uLivesRemaining = 0;
+                            break;
                         }
                         else
                         {
-                            m_uCurrentScore++;
-                            m_labelScore.text = [NSString stringWithFormat:@"Score: %u", m_uCurrentScore];
+                            nFrameScore++;
                             
                             m_vecEntities.erase(itr);
                             pCurrentEntity->pSprite->SetDraw(false);
                             delete pCurrentEntity->pSprite;
                             delete pCurrentEntity;
                             
-                            
                             // If they start to score well, spawn extras
                             if ( !(m_uCurrentScore % 10) )
                             {
-                                for (int i=0; i<(m_uCurrentScore/10); ++i) {
+                                for (int i=0; i<(m_uCurrentScore/20); ++i) {
                                     SpawnEntity();
                                 }
                             }
@@ -396,8 +486,79 @@ namespace FriendSmasher
                     }
                 }
                 
+                if (nFrameScore > 0)
+                {
+                    System::Sprite* pRiser = new System::Sprite(m_pRiserTextures[nFrameScore < 3 ? (nFrameScore-1) : 2]);
+                    
+                    pRiser->SetPivot(Math::vec2(pRiser->GetWidth() * 0.5f, pRiser->GetHeight() * 0.5f));
+                    pRiser->SetPosition(m_vBeginTouchPos[0]);
+                    pRiser->SetLayer(1000);
+                    m_vecRisers.push_back(pRiser);
+                    
+                    if (nFrameScore > 1) {
+                        m_confettiEffect->SetMaxPosition(Math::vec3(m_vBeginTouchPos[0].x - 320.f, (m_vBeginTouchPos[0].y - 480.f) * -1.f, -900.f));
+                        m_confettiEffect->SetMinPosition(Math::vec3(m_vBeginTouchPos[0].x - 320.f, (m_vBeginTouchPos[0].y - 480.f) * -1.f, -900.f));
+                        m_confettiEffect->SpawnParticles(80);
+                    
+                        if (nFrameScore >= 3) {
+                            FB_SendAchievement(kACHIEVEMENT_SCOREx3);
+                        }
+                    }
+                    
+                    u32 uOldScore = m_uCurrentScore;
+                    m_uCurrentScore += (nFrameScore * nFrameScore);
+                    
+                    if (uOldScore < 50 && m_uCurrentScore >= 50) {
+                        FB_SendAchievement(kACHIEVEMENT_SCORE50);
+                    }
+                    else if (uOldScore < 100 && m_uCurrentScore >= 100) {
+                        FB_SendAchievement(kACHIEVEMENT_SCORE100);
+                    }
+                    else if (uOldScore < 150 && m_uCurrentScore >= 150) {
+                        FB_SendAchievement(kACHIEVEMENT_SCORE150);
+                    }
+                    else if (uOldScore < 200 && m_uCurrentScore >= 200) {
+                        FB_SendAchievement(kACHIEVEMENT_SCORE200);
+                    }
+                    
+                    
+                    m_labelScore.text = [NSString stringWithFormat:@"Score: %u", m_uCurrentScore];
+                    
+                }
+                
+                m_confettiEffect->Update();
+                
+                std::vector<System::Sprite*>::iterator riseritr = m_vecRisers.begin();
+                std::vector<System::Sprite*>::iterator riserend = m_vecRisers.end();
+                for (; riseritr != riserend; ++riseritr)
+                {
+                    System::Sprite* pCurrentRiser = *riseritr;
+                    pCurrentRiser->SetPosition(Math::vec2(pCurrentRiser->GetPosition().x, pCurrentRiser->GetPosition().y - 2.f));
+                    pCurrentRiser->SetAlpha(pCurrentRiser->GetAlpha() - 0.025f);
+                    
+                    if (pCurrentRiser->GetAlpha() <= 0.f) {
+                        pCurrentRiser->SetDraw(false);
+                        m_vecRisers.erase(riseritr);
+                        delete pCurrentRiser;
+                        return;
+                    }
+                }
+                
                 // Game over
-                if (m_uLivesRemaining == 0) {                    
+                if (m_uLivesRemaining == 0) {
+                    
+                    std::vector<System::Sprite*>::iterator riseritr = m_vecRisers.begin();
+                    std::vector<System::Sprite*>::iterator riserend = m_vecRisers.end();
+                    for (; riseritr != riserend; ++riseritr)
+                    {
+                        System::Sprite* pCurrentRiser = *riseritr;
+                        pCurrentRiser->SetDraw(false);
+                        delete pCurrentRiser;
+                    }
+                    m_vecRisers.clear();
+                    
+                    m_confettiEffect->Reset();
+                    
                     m_kGameState = m_kGameState == kGAMESTATE_PLAYING ? kGAMESTATE_PLAYING_GAMEOVER : kGAMESTATE_PLAYING_GAMEOVER_NOSOCIAL;
                 }
                             
@@ -431,8 +592,10 @@ namespace FriendSmasher
         void GameController::StartGame(bool bSocial, bool bChallenge, NSString *challengeFriendName,  NSString *challengeFriendId)
         {
             m_pLoadingSprite->SetDraw(true);
+            m_pLoadingSpinner->SetDraw(true);
             
             m_pPlayButtonSprite->SetDraw(false);
+            m_pWelcomePanel->SetDraw(false);
             m_pLogoutButtonSprite->SetDraw(false);
             m_pChallengeButtonSprite->SetDraw(false);
             m_pBragButtonSprite->SetDraw(false);
@@ -446,19 +609,24 @@ namespace FriendSmasher
                 
                 if (bChallenge) {
                     
-                    m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@ !", [[challengeFriendName componentsSeparatedByString:@" "] objectAtIndex:0]];
+                    m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@!", [[challengeFriendName componentsSeparatedByString:@" "] objectAtIndex:0]];
                     
                     if (m_pFriendTexture) { 
                         delete m_pFriendTexture;
                     }
                     
+                    m_uFriendFBID = [challengeFriendId intValue];
+                    
                     m_pFriendTexture = new System::TextureResource();
-                    m_pFriendTexture->CreateFromFBID([challengeFriendId intValue]);
+                    m_pFriendTexture->CreateFromFBID(m_uFriendFBID, 128, 128);
                     
                     m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING;
                     
                 }
                 else {
+                    
+                    m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING;
+                    
                     [[FBRequest requestForGraphPath:@"me/friends"]
                      startWithCompletionHandler:
                      ^(FBRequestConnection *connection, 
@@ -474,16 +642,18 @@ namespace FriendSmasher
                             NSString *friendId = [friendData objectForKey:@"id"];
                             NSString *friendName = [friendData objectForKey:@"name"];
                              
-                            m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@ !", [[friendName componentsSeparatedByString:@" "] objectAtIndex:0]];
+                            m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@!", [[friendName componentsSeparatedByString:@" "] objectAtIndex:0]];
                              
                             if (m_pFriendTexture) { 
                                 delete m_pFriendTexture;
                             }
+                     
+                            m_uFriendFBID = [friendId intValue];
                              
                             m_pFriendTexture = new System::TextureResource();
-                            m_pFriendTexture->CreateFromFBID([friendId intValue]);
+                            m_pFriendTexture->CreateFromFBID(m_uFriendFBID, 128, 128);
                              
-                            m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING;
+                            
                      
                         }
                      }];  
@@ -546,6 +716,7 @@ namespace FriendSmasher
             }
             
             m_pPlayButtonSprite->SetDraw(true);
+            m_pWelcomePanel->SetDraw(true);
             m_pLogoSprite->SetDraw(true);
             
             delete m_pFriendTexture;
@@ -554,7 +725,7 @@ namespace FriendSmasher
             m_labelScore.hidden = YES;
             m_labelFriendName.hidden = YES;
             
-            m_labelName.text = [NSString stringWithFormat:@"Game Over!"];
+            //m_labelName.text = [NSString stringWithFormat:@"Game Over!"];
             m_labelNameStatus.text = [NSString stringWithFormat:@"You scored %d!", m_uCurrentScore];
             
             m_labelName.hidden = NO;
@@ -625,9 +796,7 @@ namespace FriendSmasher
         {
             if (bSocial)
             {
-                AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-                
-                if (appDelegate.session.isOpen) {        
+                if ([FBSession activeSession].isOpen) {        
                     m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_PREPARING;
                     
                     m_pLoginButtonSprite->SetDraw(false);
@@ -642,6 +811,7 @@ namespace FriendSmasher
                 m_pLoginButtonSprite->SetDraw(false);
                 
                 m_pPlayButtonSprite->SetDraw(true);
+                m_pWelcomePanel->SetDraw(true);
                 
                 m_kGameState = kGAMESTATE_FRONTSCREEN_NOSOCIAL_READY;
             }

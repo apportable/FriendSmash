@@ -24,9 +24,12 @@
 #include "Graphics.h"
 #include "Sprite.h"
 #include "TextureResource.h"
+#include "ConfettiEffect.h"
 
 #import "ViewController.h"
 #import "AppDelegate.h"
+
+#import <Accounts/Accounts.h>
 
 namespace FriendSmasher
 {
@@ -50,18 +53,8 @@ namespace FriendSmasher
             void EndTouch(int nIndex, float fX, float fY);
                 
 
-            // Facebook Integration
-            void FB_CreateNewSession();
-            void FB_Login();
-            void FB_Logout();
-            void FB_ProcessIncomingURL();
-            void FB_ProcessIncomingRequest(NSString* urlString);
-            void FB_ProcessIncomingFeed(NSString* urlString);
-            void FB_Customize();
-            void FB_SendRequest(const int nScore);
-            void FB_SendFilteredRequest(const int nScore);
-            void FB_SendBrag(const int nScore);
-            void FB_SendScore(const int nScore);
+
+            
             
         protected:    
             
@@ -72,6 +65,7 @@ namespace FriendSmasher
             
             System::Sprite* m_pBackgroundSprite;
             System::Sprite* m_pLoginButtonSprite;
+            System::Sprite* m_pWelcomePanel;
             System::Sprite* m_pPlayButtonSprite;
             System::Sprite* m_pLogoutButtonSprite;
             System::Sprite* m_pChallengeButtonSprite;
@@ -79,6 +73,7 @@ namespace FriendSmasher
             System::Sprite* m_pUserImageSprite;
             System::Sprite* m_pFriendImageSprite;
             System::Sprite* m_pLoadingSprite;
+            System::Sprite* m_pLoadingSpinner;
             System::Sprite* m_pLogoSprite;
             System::Sprite* m_pHeartSprite[3];
             
@@ -88,8 +83,14 @@ namespace FriendSmasher
             System::TextureResource* m_pUserTexture;
             System::TextureResource* m_pFriendTexture;
             System::TextureResource* m_pNonFriendTexture[10];
+            System::TextureResource* m_pRiserTextures[3];
+    
+            ///////
+            
+            ConfettiEffect* m_confettiEffect;
             
             ///////
+            
             UILabel *m_labelName;
             UILabel *m_labelNameStatus;
             UILabel *m_labelFriendName;
@@ -113,6 +114,8 @@ namespace FriendSmasher
             int m_nNoSocialFriendCeleb;
             
             float m_fSpawnTimer;
+
+            std::vector<System::Sprite*> m_vecRisers;
             
             ///////
                 
@@ -130,6 +133,17 @@ namespace FriendSmasher
                 kGAMESTATE_PLAYING_GAMEOVER,
                 kGAMESTATE_PLAYING_GAMEOVER_NOSOCIAL,
             };
+            
+            
+            enum eGameAchievements
+            {
+                kACHIEVEMENT_SCORE50 = 0,
+                kACHIEVEMENT_SCORE100,
+                kACHIEVEMENT_SCORE150,
+                kACHIEVEMENT_SCORE200,
+                kACHIEVEMENT_SCOREx3
+            };
+            
             
             eGameState m_kGameState;
             float m_fDeltaTime;
@@ -153,12 +167,35 @@ namespace FriendSmasher
                 kLOSSTYPE_HITCELEB,
             };
             
-            int m_nPlayerFBID;
+            u64 m_uPlayerFBID;
+            u64 m_uFriendFBID;
             
             eLossType m_kLossType;
             
             EntityInstance* m_pCelebLossEntity;
-
+            
+            ViewController* m_viewController;
+            ACAccount* m_facebookAccount;
+            
+            
+            // Facebook Integration
+            
+        public:
+            
+            void FB_CreateNewSession();
+            void FB_Login();
+            void FB_Logout();
+            void FB_ProcessIncomingURL();
+            void FB_ProcessIncomingRequest(NSString* urlString);
+            void FB_ProcessIncomingFeed(NSString* urlString);
+            void FB_Customize();
+            void FB_SendRequest(const int nScore);
+            void FB_SendFilteredRequest(const int nScore);
+            void FB_SendBrag(const int nScore);
+            void FB_SendScore(const int nScore);
+            void FB_SendAchievement(eGameAchievements achievement);
+            void FB_SendOG();
+            void FB_RequestWritePermissions();
         };
     }
 }

@@ -51,8 +51,6 @@
     
     NSData *imageData = [NSURLConnection sendSynchronousRequest:request returningResponse:&response error:&error];
     
-    //[request release];
-    
     if (error || response.statusCode != 200 || !imageData || imageData.length == 0){
         
         [self performSelectorOnMainThread:@selector(reportError:) withObject:url waitUntilDone:NO];
@@ -60,7 +58,6 @@
         
         UIImage *image = [[UIImage alloc]initWithData:imageData];
         block(image);
-        //[image release];
     }
 }
 

@@ -33,6 +33,7 @@ namespace FriendSmasher
     {
         SpriteManager::SpriteManager()
 		{
+            m_uNumSprites = 0;
 			memset( m_apSprites, NULL, sizeof(m_apSprites) );
 			
 			//

@@ -1,7 +1,5 @@
 # Friend Smash sample Facebook app
 
-Sample app demo from GDC Europe 2012.
-
 Authors: Ali Parr (aliparr)
 
 ## Installing

@@ -31,7 +31,8 @@ namespace FriendSmasher
             ~TextureResource();
     	
             bool CreateFromFile(const char* filename);
-            bool CreateFromFBID(int nID);
+
+            bool CreateFromFBID(u64 uID, u32 uWidth, u32 uHeight);
             
             u32 GetTextureID() const {return m_uTextureID[0];}
             

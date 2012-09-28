@@ -93,10 +93,10 @@ namespace FriendSmasher
             
             return true;
         }
-        
-        bool TextureResource::CreateFromFBID(int nID)
-        {
-            NSString *resourceAddress = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%d/picture?type=large", nID];
+                
+        bool TextureResource::CreateFromFBID(u64 uID, u32 uWidth, u32 uHeight)
+        {           
+            NSString *resourceAddress = [[NSString alloc] initWithFormat:@"https://graph.facebook.com/%llu/picture?width=256&height=256", uID];
             
             ImageFetcher* fetcher = [[ImageFetcher alloc] init];
             [fetcher fetchImageWithUrl:resourceAddress andCompletionBlock:^(UIImage *image)
@@ -115,8 +115,8 @@ namespace FriendSmasher
                 glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
                 glBlendFunc(GL_ONE, GL_SRC_COLOR);
              
-                m_uWidth = 128;
-                m_uHeight = 128;                
+                m_uWidth = uWidth;
+                m_uHeight = uHeight;
                 
                 CGSize newSize;
                 newSize.width = m_uWidth;
