@@ -81,6 +81,10 @@ static void SetBlendMode( System::Sprite::eBlendMode mode )
 		case System::Sprite::BLEND_MASK:
 			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 			break;
+        case System::Sprite::BLEND_PREMULTIPLIEDALPHA:
+            break;
+        case System::Sprite::BLEND_OFF_MODULATE:
+            break;
 	}
 }
 

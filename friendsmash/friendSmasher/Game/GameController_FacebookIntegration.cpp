@@ -269,10 +269,19 @@ namespace FriendSmasher
         
         void GameController::FB_SendOG()
         {
-            FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"me/friendsmashsample:smash?profile=%llu", m_uFriendFBID] parameters:nil HTTPMethod:@"POST"];
-                                    
-            [req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            FBRequest* newAction = [[FBRequest alloc]initForPostWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"me/friendsmashsample:smash?profile=%llu", m_uFriendFBID] graphObject:nil];
+            
+            FBRequestConnection* conn = [[FBRequestConnection alloc] init];
+            
+            [conn addRequest:newAction completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+             if(error) {
+             NSLog(@"Sending OG Story Failed: %@", result[@"id"]);
+             return;
+             }
+             
+             NSLog(@"OG action ID: %@", result[@"id"]);
              }];
+            [conn start];
         }
         
   
