@@ -4,19 +4,9 @@ Authors: Ali Parr (aliparr)
 
 ## Installing
 
-Installing the samples requires you to add the Facebook SDK, the Facebook SDK resource bundle, and the Facebook SDK deprecated headers for some samples. The missing required libraries and files will show up in red under the `Frameworks` folder when you open up the project. Simply delete those references then do the following:
+Before running the sample, please see the Getting Started on iOS guide, available here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/3.1/
+In particular, follow the 'Adding SDK & framework dependencies' section of the guide.
 
-* Add the Facebook SDK for iOS Framework by dragging the `FacebookSDK.framework` folder from the SDK installation folder into the Frameworks section of your Project Navigator.
-
-* Choose 'Create groups for any added folders' and deselect 'Copy items into destination group's folder (if needed)' to keep the reference to the SDK installation folder, rather than creating a copy.
-
-* Add the Facebook SDK for iOS resource bundle by dragging the `FacebookSDKResources.bundle` file from the `FacebookSDK.framework/Resources` folder into the Frameworks section of your Project Navigator.
-
-* As you did when copying the Framework, choose 'Create groups for any added folders' and deselect 'Copy items into destination group's folder (if needed)'
-
-* Add the Deprecated Headers. The headers can be found here `~Documents/FacebookSDK/FacebookSDK.framework/Versions/A/DeprecatedHeaders`. Drag the whole DeprecatedHeaders folder and deselect the ''Copy items into destibation group's folder (if needed)'' option to add the headers as a reference.
-
-* Build and run the project.
 
 ## Documentation
 
