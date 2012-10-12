@@ -19,7 +19,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize facebook = _facebook;
 @synthesize openedURL = _openedURL;
 
 - (void)dealloc
@@ -40,7 +39,6 @@
          annotation:(id)annotation {
     // attempt to extract a token from the url
     self.openedURL = url;
-    [[FBSession activeSession] handleOpenURL:url];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:APP_HANDLED_URL object:nil];    
     
@@ -78,7 +76,6 @@
 - (void)applicationWillTerminate:(UIApplication *)application
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-    [[FBSession activeSession] close];
 }
 
 
