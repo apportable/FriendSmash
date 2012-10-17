@@ -72,6 +72,10 @@ namespace FriendSmasher
             for (u32 i=0; i<3; ++i) {
                 m_pHeartSprite[i] = NULL;
             }
+            
+            for (u32 i=0; i<kACHIEVEMENT_MAX; ++i) {
+                m_bShouldSendAchievement[i] = false;
+            }
                
             m_labelName = [[UILabel alloc] initWithFrame:CGRectMake(88.0, 36.0, 220.0, 100.0)];
             m_labelName.textAlignment = UITextAlignmentLeft;
@@ -509,7 +513,8 @@ namespace FriendSmasher
                         m_confettiEffect->SpawnParticles(80);
                     
                         if (nFrameScore >= 3) {
-                            FB_SendAchievement(kACHIEVEMENT_SCOREx3);
+                            m_bShouldSendAchievement[kACHIEVEMENT_SCOREx3] = true;
+                            
                         }
                     }
                     
@@ -517,16 +522,16 @@ namespace FriendSmasher
                     m_uCurrentScore += (nFrameScore * nFrameScore);
                     
                     if (uOldScore < 50 && m_uCurrentScore >= 50) {
-                        FB_SendAchievement(kACHIEVEMENT_SCORE50);
+                        m_bShouldSendAchievement[kACHIEVEMENT_SCORE50] = true;
                     }
                     else if (uOldScore < 100 && m_uCurrentScore >= 100) {
-                        FB_SendAchievement(kACHIEVEMENT_SCORE100);
+                        m_bShouldSendAchievement[kACHIEVEMENT_SCORE100] = true;
                     }
                     else if (uOldScore < 150 && m_uCurrentScore >= 150) {
-                        FB_SendAchievement(kACHIEVEMENT_SCORE150);
+                        m_bShouldSendAchievement[kACHIEVEMENT_SCORE150] = true;
                     }
                     else if (uOldScore < 200 && m_uCurrentScore >= 200) {
-                        FB_SendAchievement(kACHIEVEMENT_SCORE200);
+                        m_bShouldSendAchievement[kACHIEVEMENT_SCORE200] = true;
                     }
                     
                     
@@ -607,6 +612,10 @@ namespace FriendSmasher
             m_pLogoutButtonSprite->SetDraw(false);
             m_pChallengeButtonSprite->SetDraw(false);
             m_pBragButtonSprite->SetDraw(false);
+            
+            for (u32 i=0; i<kACHIEVEMENT_MAX; ++i) {
+                m_bShouldSendAchievement[i] = false;
+            }
             
             m_labelName.hidden = YES;
             m_labelNameStatus.hidden = YES;
@@ -715,6 +724,23 @@ namespace FriendSmasher
                 EntityInstance* pCurrentEntity = *itr;
                 delete pCurrentEntity->pSprite;
                 delete pCurrentEntity;
+            }
+            
+            if (m_bShouldSendAchievement[kACHIEVEMENT_SCOREx3]) {
+                FB_SendAchievement(kACHIEVEMENT_SCOREx3);
+            }
+            
+            if (m_bShouldSendAchievement[kACHIEVEMENT_SCORE200]) {
+                FB_SendAchievement(kACHIEVEMENT_SCORE200);
+            }
+            else if (m_bShouldSendAchievement[kACHIEVEMENT_SCORE150]) {
+                FB_SendAchievement(kACHIEVEMENT_SCORE150);
+            }
+            else if (m_bShouldSendAchievement[kACHIEVEMENT_SCORE100]) {
+                FB_SendAchievement(kACHIEVEMENT_SCORE100);
+            }
+            else if (m_bShouldSendAchievement[kACHIEVEMENT_SCORE50]) {
+                FB_SendAchievement(kACHIEVEMENT_SCORE50);     
             }
             
             m_vecEntities.clear();

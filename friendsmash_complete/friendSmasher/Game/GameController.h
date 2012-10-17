@@ -141,7 +141,8 @@ namespace FriendSmasher
                 kACHIEVEMENT_SCORE100,
                 kACHIEVEMENT_SCORE150,
                 kACHIEVEMENT_SCORE200,
-                kACHIEVEMENT_SCOREx3
+                kACHIEVEMENT_SCOREx3,
+                kACHIEVEMENT_MAX
             };
             
             
@@ -177,6 +178,8 @@ namespace FriendSmasher
             ViewController* m_viewController;
             ACAccount* m_facebookAccount;
             
+            
+            bool m_bShouldSendAchievement[kACHIEVEMENT_MAX];
             
             // Facebook Integration
             

@@ -219,10 +219,23 @@ namespace FriendSmasher
         void GameController::FB_RequestWritePermissions()
         {
             // We need to request write permissions from Facebook
-            NSArray *permissions = [[NSArray alloc] initWithObjects:
-                                    @"publish_actions", nil];
+            static bool bHaveRequestedPublishPermissions = false;
             
-            [[FBSession activeSession] reauthorizeWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends completionHandler:^(FBSession *session, NSError* error) {}];
+            if (!bHaveRequestedPublishPermissions)
+            {
+                NSArray *permissions = [[NSArray alloc] initWithObjects:
+                                        @"publish_actions", nil];
+                
+                [[FBSession activeSession] reauthorizeWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends completionHandler:^(FBSession *session, NSError* error) {
+                 
+                 NSLog(@"Reauthorized with publish permissions.");
+                 
+                 }];
+                
+                bHaveRequestedPublishPermissions = true;
+            }
+            
+            
         }
         
         void GameController::FB_SendScore(const int nScore)
@@ -234,10 +247,14 @@ namespace FriendSmasher
                                              [NSString stringWithFormat:@"%d", nScore], @"score",
                                              nil];
             
-            FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST"];
+            [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+             }];
+            
+            
+            //FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST"];
             
 
-            [req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {}];
+            //[req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {}];
             
             
             // Send our custom OG
@@ -260,11 +277,12 @@ namespace FriendSmasher
                                              [NSString stringWithFormat:@"%@", [achievementURLs objectAtIndex:achievement]], @"achievement",
                                              nil];
             
-            FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"%llu/achievements", m_uPlayerFBID] parameters:params HTTPMethod:@"POST"];
-            
-            
-            [req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/achievements", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
              }];
+            
+            
+            //FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"%llu/achievements", m_uPlayerFBID] parameters:params HTTPMethod:@"POST"];
+            //[req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {}];
         }
         
         void GameController::FB_SendOG()
