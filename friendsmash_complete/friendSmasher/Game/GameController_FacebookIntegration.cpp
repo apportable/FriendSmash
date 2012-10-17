@@ -250,13 +250,6 @@ namespace FriendSmasher
             [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
              }];
             
-            
-            //FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST"];
-            
-
-            //[req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {}];
-            
-            
             // Send our custom OG
             FB_SendOG();
         }
@@ -281,8 +274,6 @@ namespace FriendSmasher
              }];
             
             
-            //FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[NSString stringWithFormat:@"%llu/achievements", m_uPlayerFBID] parameters:params HTTPMethod:@"POST"];
-            //[req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {}];
         }
         
         void GameController::FB_SendOG()

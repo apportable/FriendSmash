@@ -644,36 +644,32 @@ namespace FriendSmasher
                     
                     m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING;
 #ifndef NO_FACEBOOK_INTEGRATION
-                    [[FBRequest requestForGraphPath:@"me/friends"]
-                     startWithCompletionHandler:
-                     ^(FBRequestConnection *connection,
-                       NSDictionary *result,
-                       NSError *error)
-                     {
-                     if (!error && result)
-                     {
-                     fetchedFriendData = [[NSArray alloc] initWithArray:[result objectForKey:@"data"]];
-                     
-                     NSDictionary *friendData = [fetchedFriendData objectAtIndex: arc4random() % fetchedFriendData.count];
-                     
-                     NSString *friendId = [friendData objectForKey:@"id"];
-                     NSString *friendName = [friendData objectForKey:@"name"];
-                     
-                     m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@!", [[friendName componentsSeparatedByString:@" "] objectAtIndex:0]];
-                     
-                     if (m_pFriendTexture) {
-                     delete m_pFriendTexture;
-                     }
-                     
-                     m_uFriendFBID = [friendId intValue];
-                     
-                     m_pFriendTexture = new System::TextureResource();
-                     m_pFriendTexture->CreateFromFBID(m_uFriendFBID, 128, 128);
-                     
-                     
-                     
-                     }
-                     }];
+                    [FBRequestConnection startForMyFriendsWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                      
+                      if (!error && result)
+                      {
+                        fetchedFriendData = [[NSArray alloc] initWithArray:[result objectForKey:@"data"]];
+                      
+                        NSDictionary *friendData = [fetchedFriendData objectAtIndex: arc4random() % fetchedFriendData.count];
+                      
+                        NSString *friendId = [friendData objectForKey:@"id"];
+                        NSString *friendName = [friendData objectForKey:@"name"];
+                      
+                        m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@!", [[friendName componentsSeparatedByString:@" "] objectAtIndex:0]];
+                      
+                        if (m_pFriendTexture) {
+                            delete m_pFriendTexture;
+                        }
+                      
+                        m_uFriendFBID = [friendId intValue];
+                      
+                        m_pFriendTexture = new System::TextureResource();
+                        m_pFriendTexture->CreateFromFBID(m_uFriendFBID, 128, 128);
+                      
+                      }
+                      
+                    }];
+                    
 #endif
                 }
                 
