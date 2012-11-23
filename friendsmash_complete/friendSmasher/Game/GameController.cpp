@@ -36,6 +36,7 @@ namespace FriendSmasher
             m_pWelcomePanel(NULL),
             m_pPlayButtonSprite(NULL),
             m_pChallengeButtonSprite(NULL),
+            m_pScoresButtonSprite(NULL),
             m_pBragButtonSprite(NULL),
             m_pUserImageSprite(NULL),
             m_pFriendImageSprite(NULL),
@@ -51,6 +52,7 @@ namespace FriendSmasher
             m_kLossType(kUNDEFINED),
             m_pCelebLossEntity(NULL),
             m_pLogoutButtonSprite(NULL),
+            m_pMainMenuButtonSprite(NULL),
             m_confettiEffect(NULL),
             m_uPlayerFBID(0),
             m_nNoSocialFriendCeleb(0),
@@ -75,6 +77,12 @@ namespace FriendSmasher
             
             for (u32 i=0; i<kACHIEVEMENT_MAX; ++i) {
                 m_bShouldSendAchievement[i] = false;
+            }
+            
+            for (u32 i=0; i<m_kuLeaderboardSize; ++i) {
+                m_pLeaderboardEntries[i].pStubSprite = NULL;
+                m_pLeaderboardEntries[i].pUserSprite = NULL;
+                m_pLeaderboardEntries[i].pUserTexture = NULL;
             }
                
             m_labelName = [[UILabel alloc] initWithFrame:CGRectMake(88.0, 36.0, 220.0, 100.0)];
@@ -132,6 +140,7 @@ namespace FriendSmasher
             delete m_pFriendTexture;
             delete m_pUserTexture;
             delete m_pChallengeButtonSprite;
+            delete m_pScoresButtonSprite;
             delete m_pBragButtonSprite;
             delete m_pWelcomePanel;
             delete m_confettiEffect;
@@ -146,6 +155,10 @@ namespace FriendSmasher
 
             for (u32 i=0; i<3; ++i) {
                 delete m_pHeartSprite[i];
+            }
+            
+            for (u32 i=0; i<m_kuLeaderboardSize; ++i) {
+                delete  m_pLeaderboardEntries[i].pStubSprite;
             }
         }
 		
@@ -186,6 +199,13 @@ namespace FriendSmasher
             m_pLogoutButtonSprite->SetLayer(10);
             m_pLogoutButtonSprite->SetDraw(false);
             
+            System::TextureResource* pMainMenuButtonTextureResource = new System::TextureResource();
+            pMainMenuButtonTextureResource->CreateFromFile("Art/mainmenu_button.png");
+            m_pMainMenuButtonSprite = new System::Sprite(pMainMenuButtonTextureResource);
+            m_pMainMenuButtonSprite->SetPosition(Math::vec2(288.f, 862.f));
+            m_pMainMenuButtonSprite->SetLayer(10);
+            m_pMainMenuButtonSprite->SetDraw(false);
+                        
             
             System::TextureResource* pPlayButtonTextureResource = new System::TextureResource();
             pPlayButtonTextureResource->CreateFromFile("Art/playnow_button.png");
@@ -208,6 +228,48 @@ namespace FriendSmasher
             m_pBragButtonSprite->SetDraw(false);
             m_pBragButtonSprite->SetLayer(10);
             m_pBragButtonSprite->SetPosition(Math::vec2(0.f, 738.f));
+            
+            System::TextureResource* pScoresButtonTextureResource = new System::TextureResource();
+            pScoresButtonTextureResource->CreateFromFile("Art/scores_button.png");
+            m_pScoresButtonSprite = new System::Sprite(pScoresButtonTextureResource);
+            m_pScoresButtonSprite->SetDraw(false);
+            m_pScoresButtonSprite->SetLayer(10);
+            m_pScoresButtonSprite->SetPosition(Math::vec2(0.f, 492.f));
+            
+            
+            System::TextureResource* pLeaderboardStubTextureResources[2];
+            pLeaderboardStubTextureResources[0] = new System::TextureResource();
+            pLeaderboardStubTextureResources[0]->CreateFromFile("Art/scorestub_odd.png");
+            
+            pLeaderboardStubTextureResources[1] = new System::TextureResource();
+            pLeaderboardStubTextureResources[1]->CreateFromFile("Art/scorestub_even.png");
+            
+            
+            for (u32 i=0; i<m_kuLeaderboardSize; ++i)
+            {
+                m_pLeaderboardEntries[i].pStubSprite = new System::Sprite(pLeaderboardStubTextureResources[(i%2==0) ? 0 : 1]);
+                m_pLeaderboardEntries[i].pStubSprite->SetDraw(false);
+                m_pLeaderboardEntries[i].pStubSprite->SetLayer(10);
+                m_pLeaderboardEntries[i].pStubSprite->SetPosition(Math::vec2((i%2==0) ? 128.f : 0.f, 140.f + (110.f * i)));
+                
+                m_pLeaderboardEntries[i].pFriendName = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 38.f + (55.f * i), 240.0, 100.0)];
+                m_pLeaderboardEntries[i].pFriendName.textAlignment = (i%2==0) ? UITextAlignmentRight : UITextAlignmentLeft;
+                m_pLeaderboardEntries[i].pFriendName.textColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
+                m_pLeaderboardEntries[i].pFriendName.backgroundColor = [UIColor clearColor];
+                m_pLeaderboardEntries[i].pFriendName.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(18.0)];
+                m_pLeaderboardEntries[i].pFriendName.text = [NSString stringWithFormat:@""];
+                m_pLeaderboardEntries[i].pFriendName.hidden = YES;
+                
+                m_pLeaderboardEntries[i].pFriendScore = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 54.f + (55.f * i), 240.0, 100.0)];
+                m_pLeaderboardEntries[i].pFriendScore.textAlignment = (i%2==0) ? UITextAlignmentRight : UITextAlignmentLeft;
+                m_pLeaderboardEntries[i].pFriendScore.textColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
+                m_pLeaderboardEntries[i].pFriendScore.backgroundColor = [UIColor clearColor];
+                m_pLeaderboardEntries[i].pFriendScore.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(15.0)];
+                m_pLeaderboardEntries[i].pFriendScore.text = [NSString stringWithFormat:@""];
+                m_pLeaderboardEntries[i].pFriendScore.hidden = YES;
+
+            }
+            
             
             
             System::TextureResource* pLoadingTextureResource = new System::TextureResource();
@@ -281,8 +343,7 @@ namespace FriendSmasher
             unsigned int num_colours = sizeof(colours) / sizeof(colours[0]);
             
             m_confettiEffect->SetColours( colours, num_colours );
-            
-            
+        
             FB_CreateNewSession();
             
 #ifdef NO_FACEBOOK_INTEGRATION
@@ -337,7 +398,6 @@ namespace FriendSmasher
 #ifndef NO_FACEBOOK_INTEGRATION
                         if (![FBSession activeSession].isOpen) {
                             
-                            FB_CreateNewSession();
                             FB_Login();
                         }
 #endif
@@ -368,6 +428,14 @@ namespace FriendSmasher
             }
             else if (m_kGameState == kGAMESTATE_FRONTSCREEN_LOGGEDIN_READY || m_kGameState == kGAMESTATE_FRONTSCREEN_NOSOCIAL_READY)
             {
+                
+                if (!m_bTouched[0] && m_bTouchedLastFrame[0] && m_pScoresButtonSprite->IsPointInside(m_vEndTouchPos[0], 0.f)
+                    && m_pScoresButtonSprite->GetDraw())
+                {
+                    ViewScoreboard(true);
+                    return;
+                }
+                
                 if (!m_bTouched[0] && m_bTouchedLastFrame[0] && m_pPlayButtonSprite->IsPointInside(m_vEndTouchPos[0], 0.f)
                     && m_pPlayButtonSprite->GetDraw()) 
                 {
@@ -391,6 +459,8 @@ namespace FriendSmasher
                 {
                     FB_SendRequest(m_uCurrentScore);
                 }
+                
+                
             }
           
             else if (m_kGameState == kGAMESTATE_FRONTSCREEN_NOSOCIAL_LOADING || m_kGameState == kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING)
@@ -428,6 +498,10 @@ namespace FriendSmasher
                     return;
                 }
    
+            }
+            else if (m_kGameState == kGAMESTATE_FRONTSCREEN_SCORES)
+            {
+                UpdateScoreboard();
             }
             else if (m_kGameState == kGAMESTATE_PLAYING || m_kGameState == kGAMESTATE_PLAYING_NOSOCIAL)
             {
@@ -611,6 +685,7 @@ namespace FriendSmasher
             m_pWelcomePanel->SetDraw(false);
             m_pLogoutButtonSprite->SetDraw(false);
             m_pChallengeButtonSprite->SetDraw(false);
+            m_pScoresButtonSprite->SetDraw(false);
             m_pBragButtonSprite->SetDraw(false);
             
             for (u32 i=0; i<kACHIEVEMENT_MAX; ++i) {
@@ -767,6 +842,7 @@ namespace FriendSmasher
                 m_pUserImageSprite->SetDraw(true);
                 m_pLogoutButtonSprite->SetDraw(true);
                 m_pChallengeButtonSprite->SetDraw(true);
+                m_pScoresButtonSprite->SetDraw(true);
                 m_pBragButtonSprite->SetDraw(true);
                 
                 FB_SendScore(m_uCurrentScore);
@@ -849,7 +925,94 @@ namespace FriendSmasher
                 m_kGameState = kGAMESTATE_FRONTSCREEN_NOSOCIAL_READY;
             }
         }
-          
+        
+        void GameController::ViewScoreboard(bool bView)
+        {
+            // Head into scores view?
+            if (bView)
+            {
+                m_pPlayButtonSprite->SetDraw(false);
+                m_pWelcomePanel->SetDraw(false);
+                m_pLogoutButtonSprite->SetDraw(false);
+                m_pChallengeButtonSprite->SetDraw(false);
+                m_pScoresButtonSprite->SetDraw(false);
+                m_pBragButtonSprite->SetDraw(false);
+                m_pUserImageSprite->SetDraw(false);
+                
+                m_pMainMenuButtonSprite->SetDraw(true);
+                
+                m_labelName.hidden = YES;
+                m_labelNameStatus.hidden = YES;
+                
+                FB_GetScores();
+                
+                for (u32 i=0; i<m_kuLeaderboardSize; ++i)
+                {
+                    m_pLeaderboardEntries[i].pStubSprite->SetDraw(true);
+                    [m_pLeaderboardEntries[i].pFriendName setHidden:NO];
+                    [m_pLeaderboardEntries[i].pFriendScore setHidden:NO];
+                    
+                    [m_viewController.view addSubview:m_pLeaderboardEntries[i].pFriendName];
+                    [m_viewController.view addSubview:m_pLeaderboardEntries[i].pFriendScore];
+                }
+                
+                m_kGameState = kGAMESTATE_FRONTSCREEN_SCORES;
+            }
+            else
+            {
+                m_pPlayButtonSprite->SetDraw(true);
+                m_pWelcomePanel->SetDraw(true);
+                m_pLogoutButtonSprite->SetDraw(true);
+                m_pChallengeButtonSprite->SetDraw(true);
+                m_pScoresButtonSprite->SetDraw(true);
+                m_pBragButtonSprite->SetDraw(true);
+                m_pUserImageSprite->SetDraw(true);
+                
+                m_pMainMenuButtonSprite->SetDraw(false);
+                
+                m_labelName.hidden = NO;
+                m_labelNameStatus.hidden = NO;
+                
+                
+                for (u32 i=0; i<m_kuLeaderboardSize; ++i)
+                {
+                    m_pLeaderboardEntries[i].pStubSprite->SetDraw(false);
+                    
+                    [m_pLeaderboardEntries[i].pFriendName removeFromSuperview];
+                    [m_pLeaderboardEntries[i].pFriendScore removeFromSuperview];
+                    
+                    delete m_pLeaderboardEntries[i].pUserSprite;
+                    m_pLeaderboardEntries[i].pUserSprite = NULL;
+                    
+                    delete m_pLeaderboardEntries[i].pUserTexture;
+                    m_pLeaderboardEntries[i].pUserTexture = NULL;
+                }
+                
+                m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDIN_READY;
+            }
+
+        }
+        
+        void GameController::UpdateScoreboard()
+        {
+            for (u32 i=0; i<m_kuLeaderboardSize; ++i)
+            {
+                 if (m_pLeaderboardEntries[i].pUserTexture && m_pLeaderboardEntries[i].pUserTexture->GetIsReady() && !m_pLeaderboardEntries[i].pUserSprite)
+                 {
+                     m_pLeaderboardEntries[i].pUserSprite = new System::Sprite(m_pLeaderboardEntries[i].pUserTexture);
+                     m_pLeaderboardEntries[i].pUserSprite->SetLayer(20);
+                     m_pLeaderboardEntries[i].pUserSprite->SetPosition(Math::vec2((i%2==0) ? 567.f : 8.f, 160.f + (110.f * i)));
+                     //m_pLeaderboardEntries[i].pUserSprite->SetScale(Math::vec2(0.58f, 0.58f));
+                 }
+            }
+            
+            if (!m_bTouched[0] && m_bTouchedLastFrame[0] && m_pMainMenuButtonSprite->IsPointInside(m_vEndTouchPos[0], 0.f)
+                && m_pMainMenuButtonSprite->GetDraw())
+            {
+                ViewScoreboard(false);
+            }
+        }
+        
         void GameController::BeginTouch(int nIndex, float fX, float fY)
         {
             m_bTouched[nIndex] = true;

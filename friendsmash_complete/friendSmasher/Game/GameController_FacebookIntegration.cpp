@@ -17,14 +17,16 @@
 #include "GameController.h"
 #include <Social/Social.h>
 #include <Social/SLComposeViewController.h>
+#include "SBJson.h"
 
 namespace FriendSmasher
 {
     namespace Game
-    {            
+    {
+        
+        static const u64 kuFBAppID = 480369938658210;
         
         // Create a Facebook session for a given set of permissions
-        
         void GameController::FB_CreateNewSession()
         {
             //m_kGameState = kGAMESTATE_FRONTSCREEN_NOSOCIAL_READY;
@@ -37,24 +39,25 @@ namespace FriendSmasher
         // Attempt to open the session - perhaps tabbing over to Facebook to authorise
         void GameController::FB_Login()
         {
+            
             NSArray *permissions = [[NSArray alloc] initWithObjects:
                                     @"email",
                                     nil];
             
             // Attempt to open the session. If the session is not open, show the user the Facebook login UX
             [FBSession openActiveSessionWithReadPermissions:permissions allowLoginUI:true completionHandler:^(FBSession *session,
-                                                             FBSessionState status, 
-                                                             NSError *error) 
+                                                                                                              FBSessionState status,
+                                                                                                              NSError *error)
              {
                 // Did something go wrong during login? I.e. did the user cancel?
                 if (status == FBSessionStateClosedLoginFailed || status == FBSessionStateCreatedOpening) {
-
+             
                     // If so, just send them round the loop again
                     [[FBSession activeSession] closeAndClearTokenInformation];
                     [FBSession setActiveSession:nil];
                     FB_CreateNewSession();
                 }
-                else 
+                else
                 {
                     AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
              
@@ -68,16 +71,17 @@ namespace FriendSmasher
                     // Update our game now we've logged in
                     if (m_kGameState == kGAMESTATE_FRONTSCREEN_LOGGEDOUT) {
                         UpdateView(true);
-                    }
                 }
-                             
-             }];
+             }
              
+             }];
+            
         }
         
         
         void GameController::FB_Customize()
         {
+            
             // Provide some social context to the game by requesting the basic details of the player from facebook
             
             // Start the facebook request
@@ -98,7 +102,7 @@ namespace FriendSmasher
                     m_pUserTexture->CreateFromFBID(m_uPlayerFBID, 256, 256);
                 }
              }];
-             
+            
         }
         
         
@@ -108,7 +112,7 @@ namespace FriendSmasher
             
             AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
             
-            NSString *urlString = [appDelegate.openedURL fragment];
+            NSString *urlString = [appDelegate.openedURL absoluteString];
             NSRange range = [urlString rangeOfString:@"notif" options:NSCaseInsensitiveSearch];
             
             
@@ -119,7 +123,7 @@ namespace FriendSmasher
                 FB_ProcessIncomingRequest(urlString);
             }
             
-            range = [urlString rangeOfString:@"challenge%5Fbrag" options:NSCaseInsensitiveSearch];
+            range = [urlString rangeOfString:@"challenge_brag" options:NSCaseInsensitiveSearch];
             
             // If the url contains 'challenge_brag', we know it comes from a feed post
             if(urlString != nil && range.location != NSNotFound) 
@@ -192,7 +196,7 @@ namespace FriendSmasher
             // Here we process an incoming link that has launched the app via a feed post
             
             // Here is extract out the FBID component at the end of the brag, so 'challenge_brag_123456' becomes just 123456
-            NSString* val = [[urlString componentsSeparatedByString:@"challenge%5Fbrag%5F"] lastObject];
+            NSString* val = [[urlString componentsSeparatedByString:@"challenge_brag_"] lastObject];
             
             FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:val];
             
@@ -254,6 +258,40 @@ namespace FriendSmasher
             FB_SendOG();
         }
         
+        
+        void GameController::FB_GetScores()
+        {
+            [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores?fields=score,user", kuFBAppID] parameters:nil HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            
+                if (result && !error)
+                {
+                    int index = 0;
+                    for (NSDictionary *dict in [result objectForKey:@"data"])
+                    {
+                        NSString *name = [[[[dict objectForKey:@"user"] objectForKey:@"name"] componentsSeparatedByString:@" "] objectAtIndex:0];
+                        NSString *strScore = [dict objectForKey:@"score"];
+             
+                        m_pLeaderboardEntries[index].pFriendName.text = [NSString stringWithFormat:@"%d. %@", index+1, name];
+                        m_pLeaderboardEntries[index].pFriendScore.text = [NSString stringWithFormat:@"Score: %@", strScore];
+
+                        delete m_pLeaderboardEntries[index].pUserSprite;
+                        m_pLeaderboardEntries[index].pUserSprite = NULL;
+             
+                        u64 uFriendID = [[[dict objectForKey:@"user"] objectForKey:@"id"] longLongValue];
+                        m_pLeaderboardEntries[index].pUserTexture = new System::TextureResource();
+                        m_pLeaderboardEntries[index].pUserTexture->CreateFromFBID(uFriendID, 64, 64);
+    
+                        index++;
+                        if (index>5) {
+                            break;
+                        }
+                    }
+                }
+             
+            }];
+        }
+        
+        
         void GameController::FB_SendAchievement(eGameAchievements achievement)
         {
             // Make sure we have write permissions
@@ -296,16 +334,24 @@ namespace FriendSmasher
   
         void GameController::FB_SendRequest(const int nScore)
         {
+            FB_SendFilteredRequest(nScore);
+            return;
+            
             AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
                     
             // Enable this to turn on Frictionless Requests
             //[[appDelegate facebook] enableFrictionlessRequests];
    
             // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
-            //NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:
-            //                             @"695755709", @"685145706", @"569496010", @"623111",
-            //	                             nil];
+            NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:
+                                         @"695755709", @"685145706", @"569496010", @"7963306",
+            	                             nil];
     
+            SBJsonWriter *jsonWriter = [SBJsonWriter new];
+            NSDictionary *challenge =  [NSDictionary dictionaryWithObjectsAndKeys: [NSString stringWithFormat:@"%d", nScore], @"challenge_score", nil];
+            NSString *challengeStr = [jsonWriter stringWithObject:challenge];
+            
+            
             // Create a dictionary of key/value pairs which are the parameters of the dialog
             
             // 1. No additional parameters provided - enables generic Multi-friend selector
@@ -314,11 +360,13 @@ namespace FriendSmasher
             // 2. Optionally provide a 'to' param to direct the request at a specific user                               
                                             //@"286400088", @"to", // Ali
             // 3. Suggest friends the user may want to request, could be game context specific?                               
-                                            //[suggestedFriends componentsJoinedByString:@","], @"suggestions",
+                                            [suggestedFriends componentsJoinedByString:@","], @"suggestions",
+                                             challengeStr, @"data",
                                             nil];
             
             // Actually invoke the dialog
             [appDelegate.facebook dialog:@"apprequests" andParams:params andDelegate:nil];
+             
         }
         
         void GameController::FB_SendFilteredRequest(const int nScore)
@@ -378,7 +426,7 @@ namespace FriendSmasher
             
                     // We have the same list of suggested friends
                     NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:
-                                                 @"695755709", @"685145706", @"569496010", @"623111", 
+                                                 @"695755709", @"685145706", @"569496010", @"7963306", 
                                                  nil];
              
              
@@ -417,14 +465,16 @@ namespace FriendSmasher
             // It will first attempt to do this natively through iOS 6
             // If that's not supported we'll fall back to the web based dialog.
         
+            
             UIImage *image = [UIImage imageNamed:@"Icon@2x.png"];
             
             NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://www.friendsmash.com/challenge_brag_%llu", m_uPlayerFBID]];
             
-            bool bDisplayedDialog = [FBNativeDialogs presentShareDialogModallyFrom:m_viewController initialText:@"Checkout my Friend Smash greatness!" image:image url:url handler:^(FBNativeDialogResult result, NSError *error) {}];
+            bool bDisplayedDialog = [FBNativeDialogs presentShareDialogModallyFrom:m_viewController initialText:@"Checkout my Friend Smash greatness!" image:image url:nil handler:^(FBNativeDialogResult result, NSError *error) {}];
         
             if (!bDisplayedDialog)
             {
+            
                 AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
                 
                 // Put together the dialog parameters
@@ -435,7 +485,7 @@ namespace FriendSmasher
                                                @"http://www.friendsmash.com/images/logo_large.jpg", @"picture",
                                                
                                                // Add the link param for Deep Linking
-                                               //[NSString stringWithFormat:@"https://www.mydomain.com/challenge_brag_%d", m_nPlayerFBID], @"link",
+                                               [NSString stringWithFormat:@"https://www.friendsmash.com/challenge_brag_%llu", m_uPlayerFBID], @"link",
                                                nil];
                 
                 // Invoke the dialog

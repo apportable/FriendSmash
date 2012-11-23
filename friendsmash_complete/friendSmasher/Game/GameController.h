@@ -52,10 +52,6 @@ namespace FriendSmasher
             void ContinueTouch(int nIndex, float fX, float fY);
             void EndTouch(int nIndex, float fX, float fY);
                 
-
-
-            
-            
         protected:    
             
             void SpawnEntity();
@@ -63,12 +59,17 @@ namespace FriendSmasher
             void EndGame();
             void StartGame(bool bSocial, bool bChallenge, NSString *challengeFriendName,  NSString *challengeFriendId);
             
+            void ViewScoreboard(bool bView);
+            void UpdateScoreboard();
+            
             System::Sprite* m_pBackgroundSprite;
             System::Sprite* m_pLoginButtonSprite;
             System::Sprite* m_pWelcomePanel;
             System::Sprite* m_pPlayButtonSprite;
             System::Sprite* m_pLogoutButtonSprite;
+            System::Sprite* m_pMainMenuButtonSprite;
             System::Sprite* m_pChallengeButtonSprite;
+            System::Sprite* m_pScoresButtonSprite;
             System::Sprite* m_pBragButtonSprite;
             System::Sprite* m_pUserImageSprite;
             System::Sprite* m_pFriendImageSprite;
@@ -77,6 +78,21 @@ namespace FriendSmasher
             System::Sprite* m_pLogoSprite;
             System::Sprite* m_pHeartSprite[3];
             
+            
+            //////
+            
+            static const u32 m_kuLeaderboardSize = 6;
+            struct LeaderboardboardInstance
+            {
+                System::Sprite* pStubSprite;
+                UILabel *pFriendName;
+                UILabel *pFriendScore;
+                System::TextureResource* pUserTexture;
+                System::Sprite* pUserSprite;
+            };
+            
+            LeaderboardboardInstance m_pLeaderboardEntries[m_kuLeaderboardSize];
+
                 
             //////
             
@@ -128,6 +144,7 @@ namespace FriendSmasher
                 kGAMESTATE_FRONTSCREEN_LOGGEDIN_LOADING,
                 kGAMESTATE_FRONTSCREEN_NOSOCIAL_LOADING,
                 kGAMESTATE_FRONTSCREEN_NOSOCIAL_READY,
+                kGAMESTATE_FRONTSCREEN_SCORES,
                 kGAMESTATE_PLAYING,
                 kGAMESTATE_PLAYING_NOSOCIAL,
                 kGAMESTATE_PLAYING_GAMEOVER,
@@ -196,6 +213,7 @@ namespace FriendSmasher
             void FB_SendFilteredRequest(const int nScore);
             void FB_SendBrag(const int nScore);
             void FB_SendScore(const int nScore);
+            void FB_GetScores();
             void FB_SendAchievement(eGameAchievements achievement);
             void FB_SendOG();
             void FB_RequestWritePermissions();
