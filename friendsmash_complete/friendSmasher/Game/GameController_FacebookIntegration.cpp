@@ -251,8 +251,34 @@ namespace FriendSmasher
                                              [NSString stringWithFormat:@"%d", nScore], @"score",
                                              nil];
             
-            [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+            NSLog(@"Fetching current score");
+            
+            // Get the score, and only send the updated score if it's highter
+            [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+             
+                if (result && !error) {
+             
+                    int nCurrentScore = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] intValue];
+             
+                    NSLog(@"Current score is %d", nCurrentScore);
+             
+                    if (nScore > nCurrentScore) {
+             
+                        NSLog(@"Posting new score of %d", nScore);
+             
+                        [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+                         
+                            NSLog(@"Score posted");
+                        }];
+                    }
+                    else {
+                        NSLog(@"Existing score is higher - not posting new score");
+                    }
+                }
+             
              }];
+            
+            
             
             // Send our custom OG
             FB_SendOG();

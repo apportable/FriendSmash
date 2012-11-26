@@ -254,7 +254,7 @@ namespace FriendSmasher
                 
                 m_pLeaderboardEntries[i].pFriendName = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 38.f + (55.f * i), 240.0, 100.0)];
                 m_pLeaderboardEntries[i].pFriendName.textAlignment = (i%2==0) ? UITextAlignmentRight : UITextAlignmentLeft;
-                m_pLeaderboardEntries[i].pFriendName.textColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
+                m_pLeaderboardEntries[i].pFriendName.textColor = [UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:1.0];
                 m_pLeaderboardEntries[i].pFriendName.backgroundColor = [UIColor clearColor];
                 m_pLeaderboardEntries[i].pFriendName.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(18.0)];
                 m_pLeaderboardEntries[i].pFriendName.text = [NSString stringWithFormat:@""];
@@ -262,7 +262,7 @@ namespace FriendSmasher
                 
                 m_pLeaderboardEntries[i].pFriendScore = [[UILabel alloc] initWithFrame:CGRectMake(40.0, 54.f + (55.f * i), 240.0, 100.0)];
                 m_pLeaderboardEntries[i].pFriendScore.textAlignment = (i%2==0) ? UITextAlignmentRight : UITextAlignmentLeft;
-                m_pLeaderboardEntries[i].pFriendScore.textColor = [UIColor colorWithRed:0.14 green:0.14 blue:0.14 alpha:1.0];
+                m_pLeaderboardEntries[i].pFriendScore.textColor = [UIColor colorWithRed:0.84 green:0.84 blue:0.84 alpha:1.0];
                 m_pLeaderboardEntries[i].pFriendScore.backgroundColor = [UIColor clearColor];
                 m_pLeaderboardEntries[i].pFriendScore.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(15.0)];
                 m_pLeaderboardEntries[i].pFriendScore.text = [NSString stringWithFormat:@""];
@@ -419,6 +419,7 @@ namespace FriendSmasher
                     m_labelNameStatus.hidden = NO;
                     
                     m_pPlayButtonSprite->SetDraw(true);
+                    m_pScoresButtonSprite->SetDraw(true);
                     m_pWelcomePanel->SetDraw(true);
                     m_pLogoutButtonSprite->SetDraw(true);
                                         
