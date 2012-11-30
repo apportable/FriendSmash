@@ -81,9 +81,6 @@ namespace FriendSmasher
         
         void GameController::FB_Customize()
         {
-            
-            // Provide some social context to the game by requesting the basic details of the player from facebook
-            
             // Start the facebook request
             [[FBRequest requestForMe]
               startWithCompletionHandler:
@@ -323,11 +320,11 @@ namespace FriendSmasher
             // Make sure we have write permissions
             FB_RequestWritePermissions();
             
-            NSArray *achievementURLs = [NSArray arrayWithObjects:   @"http://www.friendsmash.com/achievement_50.html",
-                                                                    @"http://www.friendsmash.com/achievement_100.html",
-                                                                    @"http://www.friendsmash.com/achievement_150.html",
-                                                                    @"http://www.friendsmash.com/achievement_200.html",
-                                                                    @"http://www.friendsmash.com/achievement_x3.html",
+            NSArray *achievementURLs = [NSArray arrayWithObjects:   @"http://www.friendsmash.com/opengraph/achievement_50.html",
+                                                                    @"http://www.friendsmash.com/opengraph/achievement_100.html",
+                                                                    @"http://www.friendsmash.com/opengraph/achievement_150.html",
+                                                                    @"http://www.friendsmash.com/opengraph/achievement_200.html",
+                                                                    @"http://www.friendsmash.com/opengraph/achievement_x3.html",
                                                                     nil];
             
             NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -547,6 +544,7 @@ namespace FriendSmasher
             
             m_kGameState = kGAMESTATE_FRONTSCREEN_LOGGEDOUT;
         }
+        
     
     }
 		
