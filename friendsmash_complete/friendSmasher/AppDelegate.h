@@ -15,14 +15,11 @@
  */
 
 #import <UIKit/UIKit.h>
-
-#import "Facebook.h"
+#import <FacebookSDK/FacebookSDK.h>
 
 #define APP_HANDLED_URL @"APP_HANDLED_URL"
 
 @interface AppDelegate : UIResponder <UIApplicationDelegate>
-
-@property (nonatomic, retain) Facebook *facebook;
 
 @property (strong, nonatomic) UIWindow *window;
 

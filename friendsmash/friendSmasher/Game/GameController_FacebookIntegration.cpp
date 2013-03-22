@@ -83,11 +83,7 @@ namespace FriendSmasher
         void GameController::FB_Logout()
         {
             // Log out of Facebook and reset our session
-            
-            AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-            
             // Enable this code if you implement a logout feature
-            //[appDelegate.facebook logout:nil];
             //[[FBSession activeSession] closeAndClearTokenInformation];
             //[FBSession setActiveSession:nil];
             

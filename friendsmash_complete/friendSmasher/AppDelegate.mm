@@ -19,7 +19,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize facebook = _facebook;
 @synthesize openedURL = _openedURL;
 
 - (void)dealloc

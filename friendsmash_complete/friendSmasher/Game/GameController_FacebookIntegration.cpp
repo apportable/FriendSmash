@@ -59,25 +59,14 @@ namespace FriendSmasher
                 }
                 else
                 {
-                    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-             
-                    // Required to initialise the old SDK FB object here so we can play with Dialogs
-                    appDelegate.facebook = [[Facebook alloc] initWithAppId:[FBSession activeSession].appID andDelegate:nil];
-             
-                    // Initialise the old SDK with our new credentials
-                    appDelegate.facebook.accessToken = [FBSession activeSession].accessToken;
-                    appDelegate.facebook.expirationDate = [FBSession activeSession].expirationDate;
-             
                     // Update our game now we've logged in
                     if (m_kGameState == kGAMESTATE_FRONTSCREEN_LOGGEDOUT) {
                         UpdateView(true);
                 }
              }
              
-             }];
-            
+             }];  
         }
-        
         
         void GameController::FB_Customize()
         {
@@ -99,10 +88,8 @@ namespace FriendSmasher
                     m_pUserTexture->CreateFromFBID(m_uPlayerFBID, 256, 256);
                 }
              }];
-            
         }
-        
-        
+       
         void GameController::FB_ProcessIncomingURL()
         {
             // Process the incoming url and see if it's of value...
@@ -227,11 +214,11 @@ namespace FriendSmasher
                 NSArray *permissions = [[NSArray alloc] initWithObjects:
                                         @"publish_actions", nil];
                 
-                [[FBSession activeSession] reauthorizeWithPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends completionHandler:^(FBSession *session, NSError* error) {
-                 
-                 NSLog(@"Reauthorized with publish permissions.");
-                 
+                [[FBSession activeSession] requestNewPublishPermissions:permissions defaultAudience:FBSessionDefaultAudienceFriends completionHandler:^(FBSession *session, NSError *error) {
+                    NSLog(@"Reauthorized with publish permissions.");
                  }];
+                
+        
                 
                 bHaveRequestedPublishPermissions = true;
             }
@@ -357,13 +344,14 @@ namespace FriendSmasher
   
         void GameController::FB_SendRequest(const int nScore)
         {
-            FB_SendFilteredRequest(nScore);
-            return;
+            //FB_SendFilteredRequest(nScore);
+            //return;
             
-            AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-                    
             // Enable this to turn on Frictionless Requests
             //[[appDelegate facebook] enableFrictionlessRequests];
+            
+  
+            
    
             // Normally this won't be hardcoded but will be context specific, i.e. players you are in a match with, or players who recently played the game etc
             NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:
@@ -379,16 +367,35 @@ namespace FriendSmasher
             
             // 1. No additional parameters provided - enables generic Multi-friend selector
             NSMutableDictionary* params =   [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                            [NSString stringWithFormat:@"I just smashed %d friends! Can you beat it?", nScore], @"message",
             // 2. Optionally provide a 'to' param to direct the request at a specific user                               
                                             //@"286400088", @"to", // Ali
             // 3. Suggest friends the user may want to request, could be game context specific?                               
                                             [suggestedFriends componentsJoinedByString:@","], @"suggestions",
                                              challengeStr, @"data",
                                             nil];
+                        
+            FBFrictionlessRecipientCache *friendCache = [[FBFrictionlessRecipientCache alloc] init];
+            [friendCache prefetchAndCacheForSession:nil];
             
-            // Actually invoke the dialog
-            [appDelegate.facebook dialog:@"apprequests" andParams:params andDelegate:nil];
+            [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                          message:[NSString stringWithFormat:@"I just smashed %d friends! Can you beat it?", nScore]
+                                                            title:nil
+                                                       parameters:params
+                                                          handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+             if (error) {
+                    // Case A: Error launching the dialog or sending request.
+                    NSLog(@"Error sending request.");
+             } else {
+                if (result == FBWebDialogResultDialogNotCompleted) {
+                    // Case B: User clicked the "x" icon
+                    NSLog(@"User canceled request.");
+                } else {
+                    NSLog(@"Request Sent.");
+                }
+             }}
+             friendCache:friendCache];
+    
+            
              
         }
         
@@ -440,12 +447,9 @@ namespace FriendSmasher
                     }
              
                     // Now we have a list of friends with an iOS device, we can send requests to them
-                    AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
             
                     // We create our parameter dictionary as we did before
-                    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                                   [NSString stringWithFormat:@"I just smashed %d friends! Can you beat it?", nScore], @"message",
-                                                    nil];
+                    NSMutableDictionary* params = [NSMutableDictionary dictionaryWithObjectsAndKeys:nil];
             
                     // We have the same list of suggested friends
                     NSArray *suggestedFriends = [[NSArray alloc] initWithObjects:
@@ -474,9 +478,25 @@ namespace FriendSmasher
                         NSString *selectIDsStr = [validSuggestedFriends componentsJoinedByString:@","];
                         [params setObject:selectIDsStr forKey:@"suggestions"];
                     }
-            
-                    // Finally, we're ready to invoke the dialog
-                    [appDelegate.facebook dialog:@"apprequests" andParams:params andDelegate:nil];
+             
+                     FBFrictionlessRecipientCache *friendCache = [[FBFrictionlessRecipientCache alloc] init];
+                     [friendCache prefetchAndCacheForSession:nil];
+                     
+                     [FBWebDialogs presentRequestsDialogModallyWithSession:nil
+                                                                   message:[NSString stringWithFormat:@"I just smashed %d friends! Can you beat it?", nScore]
+                                                                     title:nil
+                                                                parameters:params
+                                                                   handler:^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                      if (error) {
+                        NSLog(@"Error sending request.");
+                      } else {
+                        if (result == FBWebDialogResultDialogNotCompleted) {
+                            NSLog(@"User canceled request.");
+                        } else {
+                            NSLog(@"Request Sent.");
+                        }
+                      }}
+                                                                friendCache:friendCache];
             
                  }
              }]; 
@@ -488,17 +508,12 @@ namespace FriendSmasher
             // It will first attempt to do this natively through iOS 6
             // If that's not supported we'll fall back to the web based dialog.
         
-            
             UIImage *image = [UIImage imageNamed:@"Icon@2x.png"];
-            
-            NSURL *url = [[NSURL alloc] initWithString:[NSString stringWithFormat:@"https://www.friendsmash.com/challenge_brag_%llu", m_uPlayerFBID]];
             
             bool bDisplayedDialog = [FBNativeDialogs presentShareDialogModallyFrom:m_viewController initialText:@"Checkout my Friend Smash greatness!" image:image url:nil handler:^(FBNativeDialogResult result, NSError *error) {}];
         
             if (!bDisplayedDialog)
             {
-            
-                AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
                 
                 // Put together the dialog parameters
                 NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
@@ -510,9 +525,22 @@ namespace FriendSmasher
                                                // Add the link param for Deep Linking
                                                [NSString stringWithFormat:@"https://www.friendsmash.com/challenge_brag_%llu", m_uPlayerFBID], @"link",
                                                nil];
+
                 
                 // Invoke the dialog
-                [appDelegate.facebook dialog:@"feed" andParams:params andDelegate:nil];
+                [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                                       parameters:params
+                                                          handler:
+                 ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+                 if (error) {
+                    NSLog(@"Error publishing story.");
+                 } else {
+                    if (result == FBWebDialogResultDialogNotCompleted) {
+                        NSLog(@"User canceled story publishing.");
+                    } else {
+                        NSLog(@"Posted story");
+                    }
+                 }}];
             }
             
         }
@@ -521,10 +549,6 @@ namespace FriendSmasher
         void GameController::FB_Logout()
         {
             // Log out of Facebook and reset our session
-            
-            AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-            
-            [appDelegate.facebook logout:nil];
             [[FBSession activeSession] closeAndClearTokenInformation];
             [FBSession setActiveSession:nil];
             
