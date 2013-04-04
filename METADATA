@@ -27,6 +27,6 @@
   "tutorial": {
     "url": "https://developers.facebook.com/docs/tutorials/ios-sdk-games/"
   },
-  "featured": true,
-  "deprecated": false
+  "featured": 1,
+  "deprecated": 0
 }
