@@ -25,6 +25,4 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
-@property (nonatomic, retain) NSURL *openedURL;
-
 @end

@@ -185,9 +185,9 @@ namespace FriendSmasher
             void FB_CreateNewSession();
             void FB_Login();
             void FB_Logout();
-            void FB_ProcessIncomingURL();
-            void FB_ProcessIncomingRequest(NSString* urlString);
-            void FB_ProcessIncomingFeed(NSString* urlString);
+            void FB_ProcessIncomingURL(NSURL* targetURL);
+            void FB_ProcessIncomingRequest(NSURL* targetURL);
+            void FB_ProcessIncomingFeed(NSURL* targetURL);
             void FB_Customize();
             void FB_SendRequest(const int nScore);
             void FB_SendFilteredRequest(const int nScore);

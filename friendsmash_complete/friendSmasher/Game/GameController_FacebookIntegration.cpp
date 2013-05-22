@@ -90,97 +90,75 @@ namespace FriendSmasher
              }];
         }
        
-        void GameController::FB_ProcessIncomingURL()
+        void GameController::FB_ProcessIncomingURL(NSURL * targetURL)
         {
             // Process the incoming url and see if it's of value...
+                      
+            NSRange range = [targetURL.query rangeOfString:@"notif" options:NSCaseInsensitiveSearch];
             
-            AppDelegate *appDelegate = [[UIApplication sharedApplication]delegate];
-            
-            NSString *urlString = [appDelegate.openedURL absoluteString];
-            NSRange range = [urlString rangeOfString:@"notif" options:NSCaseInsensitiveSearch];
-            
-            
-            // If the url contains 'notif', we know it's coming from a notification - let's process it
-            if(urlString != nil && range.location != NSNotFound) 
+            // If the url's query contains 'notif', we know it's coming from a notification - let's process it
+            if(targetURL.query && range.location != NSNotFound)
             {
                 // Yes the incoming URL was a notification
-                FB_ProcessIncomingRequest(urlString);
+                FB_ProcessIncomingRequest(targetURL);
             }
+          
+            range = [targetURL.path rangeOfString:@"challenge_brag" options:NSCaseInsensitiveSearch];
             
-            range = [urlString rangeOfString:@"challenge_brag" options:NSCaseInsensitiveSearch];
-            
-            // If the url contains 'challenge_brag', we know it comes from a feed post
-            if(urlString != nil && range.location != NSNotFound) 
+            // If the url's path contains 'challenge_brag', we know it comes from a feed post
+            if(targetURL.path && range.location != NSNotFound)
             {
                 // Yes the incoming URL was a notification
-                FB_ProcessIncomingFeed(urlString);
+                FB_ProcessIncomingFeed(targetURL);
             }
              
         }
         
-        void GameController::FB_ProcessIncomingRequest(NSString* urlString)
+        void GameController::FB_ProcessIncomingRequest(NSURL* targetURL)
         {
             // Extract the notification id
-            NSArray *pairs = [urlString componentsSeparatedByString:@"&"];
-            NSMutableDictionary *params = [[NSMutableDictionary alloc] init];
+            NSArray *pairs = [targetURL.query componentsSeparatedByString:@"&"];
+            NSMutableDictionary *queryParams = [[NSMutableDictionary alloc] init];
             for (NSString *pair in pairs) 
             {
                 NSArray *kv = [pair componentsSeparatedByString:@"="];
                 NSString *val = [[kv objectAtIndex:1]
                                  stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
                 
-                [params setObject:val forKey:[kv objectAtIndex:0]];
+                [queryParams setObject:val forKey:[kv objectAtIndex:0]];
                 
             }
-            
-            NSString *targetURLString = [params valueForKey:@"target_url"];
-            
-            if (targetURLString) 
-            {
-                NSArray *pairs = [targetURLString componentsSeparatedByString:@"&"];
-                NSMutableDictionary *targetParams = [[NSMutableDictionary alloc] init];
                 
-                for (NSString *pair in pairs) 
+            NSString *requestIDsString = [queryParams objectForKey:@"request_ids"];
+            NSArray *requestIDs = [requestIDsString componentsSeparatedByString:@","];
+            
+            FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[requestIDs objectAtIndex:0]];
+            
+            [req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) 
+             {
+             if (!error) 
+             {
+                
+                if ([result objectForKey:@"from"]) 
                 {
-                    NSArray *kv = [pair componentsSeparatedByString:@"="];
-                    NSString *val = [[kv objectAtIndex:1]
-                                     stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
-                    
-                    [targetParams setObject:val forKey:[kv objectAtIndex:0]];
+                    NSString *from = [[result objectForKey:@"from"] objectForKey:@"name"];
+                    NSString *id = [[result objectForKey:@"from"] objectForKey:@"id"];
+             
+                    StartGame(true, true, from, id);
                 }
-                
-                NSString *requestIDParam = [targetParams objectForKey:@"request_ids"];
-                NSArray *requestIDs = [requestIDParam  componentsSeparatedByString:@","];
-                
-                FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:[requestIDs objectAtIndex:0]];
-                
-                [req startWithCompletionHandler:^(FBRequestConnection *connection, id result, NSError *error) 
-                 {
-                 if (!error) 
-                 {
-                    NSString *from;
-                    NSString *id;
-                 
-                    if ([result objectForKey:@"data"]) 
-                    {
-                        from = [[result objectForKey:@"from"] objectForKey:@"name"];
-                        id = [[result objectForKey:@"from"] objectForKey:@"id"];
-                 
-                        StartGame(true, true, from, id);
-                    }
-                 
-                 }
-                 
-                 }];
-            }
+             
+             }
+             
+             }];
+          
         }
         
-        void GameController::FB_ProcessIncomingFeed(NSString* urlString)
+        void GameController::FB_ProcessIncomingFeed(NSURL* targetURL)
         {
             // Here we process an incoming link that has launched the app via a feed post
             
             // Here is extract out the FBID component at the end of the brag, so 'challenge_brag_123456' becomes just 123456
-            NSString* val = [[urlString componentsSeparatedByString:@"challenge_brag_"] lastObject];
+            NSString* val = [[targetURL.path componentsSeparatedByString:@"challenge_brag_"] lastObject];
             
             FBRequest *req = [[FBRequest alloc] initWithSession:[FBSession activeSession] graphPath:val];
             
@@ -191,9 +169,8 @@ namespace FriendSmasher
                 // If the result came back okay with no errors...
                 if (result && !error) 
                 {
-                    NSString *from;
-             
-                    from = [result objectForKey:@"first_name"];
+            
+                    NSString *from = [result objectForKey:@"first_name"];
              
                     // We can start the game, 
                     StartGame(true, true, from, val);
@@ -504,45 +481,64 @@ namespace FriendSmasher
         
         void GameController::FB_SendBrag(const int nScore)
         {
-            // This function will invoke the Feed Dialog to post to a user's Timeline and News Feed
-            // It will first attempt to do this natively through iOS 6
-            // If that's not supported we'll fall back to the web based dialog.
-        
-            UIImage *image = [UIImage imageNamed:@"Icon@2x.png"];
-            
-            bool bDisplayedDialog = [FBNativeDialogs presentShareDialogModallyFrom:m_viewController initialText:@"Checkout my Friend Smash greatness!" image:image url:nil handler:^(FBNativeDialogResult result, NSError *error) {}];
-        
-            if (!bDisplayedDialog)
-            {
-                
-                // Put together the dialog parameters
-                NSMutableDictionary *params = [NSMutableDictionary dictionaryWithObjectsAndKeys:
-                                               @"Checkout my Friend Smash greatness!", @"name",
-                                               @"Come smash me back!", @"caption",
-                                               [NSString stringWithFormat:@"I just smashed %d friends! Can you beat my score?", nScore], @"description",
-                                               @"http://www.friendsmash.com/images/logo_large.jpg", @"picture",
-                                               
-                                               // Add the link param for Deep Linking
-                                               [NSString stringWithFormat:@"https://www.friendsmash.com/challenge_brag_%llu", m_uPlayerFBID], @"link",
-                                               nil];
+          
 
-                
-                // Invoke the dialog
-                [FBWebDialogs presentFeedDialogModallyWithSession:nil
-                                                       parameters:params
-                                                          handler:
-                 ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
-                 if (error) {
-                    NSLog(@"Error publishing story.");
-                 } else {
-                    if (result == FBWebDialogResultDialogNotCompleted) {
-                        NSLog(@"User canceled story publishing.");
-                    } else {
-                        NSLog(@"Posted story");
-                    }
-                 }}];
-            }
+          // This function will invoke the Feed Dialog to post to a user's Timeline and News Feed
+          // It will attemnt to use the Facebook Native Share dialog
+          // If that's not supported we'll fall back to the web based dialog.
+          
+          NSString *linkURL = [NSString stringWithFormat:@"https://www.friendsmash.com/challenge_brag_%llu", m_uPlayerFBID];
+          NSString *pictureURL = @"http://www.friendsmash.com/images/logo_large.jpg";
+          
+          // Prepare the native share dialog parameters
+          FBShareDialogParams *shareParams = [[FBShareDialogParams alloc] init];
+          shareParams.link = [NSURL URLWithString:linkURL];
+          shareParams.name = @"Checkout my Friend Smash greatness!";
+          shareParams.caption= @"Come smash me back!";
+          shareParams.picture= [NSURL URLWithString:pictureURL];
+          shareParams.description =
+            [NSString stringWithFormat:@"I just smashed %d friends! Can you beat my score?", nScore];
+          
+          if ([FBDialogs canPresentShareDialogWithParams:shareParams]){
             
+            [FBDialogs presentShareDialogWithParams:shareParams
+                                        clientState:nil
+                                            handler:^(FBAppCall *call, NSDictionary *results, NSError *error) {
+               if(error) {
+                  NSLog(@"Error publishing story.");
+               } else if (results[@"completionGesture"] && [results[@"completionGesture"] isEqualToString:@"cancel"]) {
+                  NSLog(@"User canceled story publishing.");
+               } else {
+                  NSLog(@"Story published.");
+               }
+              }];
+            
+          }else {
+         
+              // Prepare the web dialog parameters
+              NSDictionary *params = @{
+                @"name" : shareParams.name,
+                @"caption" : shareParams.caption,
+                @"description" : shareParams.description,
+                @"picture" : pictureURL,
+                @"link" : linkURL
+              };
+               
+              // Invoke the dialog
+              [FBWebDialogs presentFeedDialogModallyWithSession:nil
+                                                     parameters:params
+                                                        handler:
+               ^(FBWebDialogResult result, NSURL *resultURL, NSError *error) {
+               if (error) {
+                  NSLog(@"Error publishing story.");
+               } else {
+                  if (result == FBWebDialogResultDialogNotCompleted) {
+                      NSLog(@"User canceled story publishing.");
+                  } else {
+                      NSLog(@"Story published.");
+                  }
+               }}];
+            }
         }
         
         

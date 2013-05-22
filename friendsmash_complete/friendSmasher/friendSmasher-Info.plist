@@ -25,6 +25,8 @@
 	<string>facebook.samples.FriendSmash</string>
 	<key>FacebookAppID</key>
 	<string>480369938658210</string>
+	<key>FacebookDisplayName</key>
+	<string>Friend Smash!</string>
 	<key>CFBundleURLTypes</key>
 	<array>
 		<dict>

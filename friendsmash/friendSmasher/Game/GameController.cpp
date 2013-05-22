@@ -623,7 +623,7 @@ namespace FriendSmasher
                         delete m_pFriendTexture;
                     }
                     
-                    m_uFriendFBID = [challengeFriendId intValue];
+                    m_uFriendFBID = [challengeFriendId longLongValue];
                     
                     m_pFriendTexture = new System::TextureResource();
                     m_pFriendTexture->CreateFromFBID(m_uFriendFBID, 128, 128);
@@ -651,12 +651,12 @@ namespace FriendSmasher
                             NSString *friendName = [friendData objectForKey:@"name"];
                              
                             m_labelFriendName.text = [NSString stringWithFormat:@"Smash %@!", [[friendName componentsSeparatedByString:@" "] objectAtIndex:0]];
-                             
+                     
                             if (m_pFriendTexture) { 
                                 delete m_pFriendTexture;
                             }
                      
-                            m_uFriendFBID = [friendId intValue];
+                            m_uFriendFBID = [friendId longLongValue];
                              
                             m_pFriendTexture = new System::TextureResource();
                             m_pFriendTexture->CreateFromFBID(m_uFriendFBID, 128, 128);

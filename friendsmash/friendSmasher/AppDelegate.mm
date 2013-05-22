@@ -19,7 +19,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize openedURL = _openedURL;
 
 - (void)dealloc
 {
@@ -37,10 +36,6 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    // attempt to extract a token from the url
-    self.openedURL = url;
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:APP_HANDLED_URL object:nil];    
     
     return YES;
 }

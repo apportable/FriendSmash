@@ -80,14 +80,16 @@
 		A0DA12FF165F0CF5006351B4 /* scorestub_odd.png in Resources */ = {isa = PBXBuildFile; fileRef = A0DA12FE165F0CF5006351B4 /* scorestub_odd.png */; };
 		A0DA1301165F0D38006351B4 /* scorestub_even.png in Resources */ = {isa = PBXBuildFile; fileRef = A0DA1300165F0D38006351B4 /* scorestub_even.png */; };
 		A0DA1303165FC6AA006351B4 /* mainmenu_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A0DA1302165FC6AA006351B4 /* mainmenu_button.png */; };
-		A0DFFBA716FCAE9F007FAF8C /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A0DFFBA616FCAE9F007FAF8C /* FacebookSDK.framework */; };
-		A0DFFBAB16FCAF0B007FAF8C /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = A0DFFBAA16FCAF0B007FAF8C /* FacebookSDKResources.bundle */; };
 		A0E2172F1600C6E900414F9E /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = A0E2172E1600C6E900414F9E /* logo.png */; };
 		A0E217311600C80900414F9E /* playnow_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A0E217301600C80900414F9E /* playnow_button.png */; };
 		A0E217331600CD1100414F9E /* welcome_panel.png in Resources */ = {isa = PBXBuildFile; fileRef = A0E217321600CD1100414F9E /* welcome_panel.png */; };
 		A0E217351600D0FD00414F9E /* Avenir.ttc in Resources */ = {isa = PBXBuildFile; fileRef = A0E217341600D0FD00414F9E /* Avenir.ttc */; };
 		A0E217371600DE7D00414F9E /* login_button.png in Resources */ = {isa = PBXBuildFile; fileRef = A0E217361600DE7D00414F9E /* login_button.png */; };
 		A0E73E5515CBDC3400AB6816 /* GameController_FacebookIntegration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A0E73E5415CBDC3400AB6816 /* GameController_FacebookIntegration.cpp */; };
+		F9DEF42C172EE09300A903E0 /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DEF42B172EE09300A903E0 /* FacebookSDK.framework */; };
+		F9DEF42E172EE1B800A903E0 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DEF42D172EE1B800A903E0 /* Security.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		F9DEF438172F18F500A903E0 /* FacebookSDKResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = F9DEF437172F18F500A903E0 /* FacebookSDKResources.bundle */; };
+		F9DEF43A172F194500A903E0 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = F9DEF439172F194500A903E0 /* libsqlite3.dylib */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,14 +214,16 @@
 		A0DA12FE165F0CF5006351B4 /* scorestub_odd.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scorestub_odd.png; sourceTree = "<group>"; };
 		A0DA1300165F0D38006351B4 /* scorestub_even.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = scorestub_even.png; sourceTree = "<group>"; };
 		A0DA1302165FC6AA006351B4 /* mainmenu_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = mainmenu_button.png; sourceTree = "<group>"; };
-		A0DFFBA616FCAE9F007FAF8C /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
-		A0DFFBAA16FCAF0B007FAF8C /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
 		A0E2172E1600C6E900414F9E /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		A0E217301600C80900414F9E /* playnow_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playnow_button.png; sourceTree = "<group>"; };
 		A0E217321600CD1100414F9E /* welcome_panel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = welcome_panel.png; sourceTree = "<group>"; };
 		A0E217341600D0FD00414F9E /* Avenir.ttc */ = {isa = PBXFileReference; lastKnownFileType = file; path = Avenir.ttc; sourceTree = "<group>"; };
 		A0E217361600DE7D00414F9E /* login_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = login_button.png; sourceTree = "<group>"; };
 		A0E73E5415CBDC3400AB6816 /* GameController_FacebookIntegration.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.objcpp.preprocessed; fileEncoding = 4; path = GameController_FacebookIntegration.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
+		F9DEF42B172EE09300A903E0 /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FacebookSDK.framework; path = ../../../Documents/FacebookSDK/FacebookSDK.framework; sourceTree = "<group>"; };
+		F9DEF42D172EE1B800A903E0 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		F9DEF437172F18F500A903E0 /* FacebookSDKResources.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FacebookSDKResources.bundle; path = ../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle; sourceTree = "<group>"; };
+		F9DEF439172F194500A903E0 /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -227,6 +231,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F9DEF43A172F194500A903E0 /* libsqlite3.dylib in Frameworks */,
+				F9DEF42E172EE1B800A903E0 /* Security.framework in Frameworks */,
 				A0A92CFE16164C5700D36362 /* AdSupport.framework in Frameworks */,
 				A03DE24F160E55AE003CF127 /* Accounts.framework in Frameworks */,
 				A03DE251160E55B6003CF127 /* Social.framework in Frameworks */,
@@ -235,7 +241,7 @@
 				A009E49815B578A8000604D1 /* CoreGraphics.framework in Frameworks */,
 				A009E49A15B578A8000604D1 /* GLKit.framework in Frameworks */,
 				A009E49C15B578A8000604D1 /* OpenGLES.framework in Frameworks */,
-				A0DFFBA716FCAE9F007FAF8C /* FacebookSDK.framework in Frameworks */,
+				F9DEF42C172EE09300A903E0 /* FacebookSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -268,8 +274,10 @@
 		A009E49215B578A8000604D1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				A0DFFBAA16FCAF0B007FAF8C /* FacebookSDKResources.bundle */,
-				A0DFFBA616FCAE9F007FAF8C /* FacebookSDK.framework */,
+				F9DEF437172F18F500A903E0 /* FacebookSDKResources.bundle */,
+				F9DEF42B172EE09300A903E0 /* FacebookSDK.framework */,
+				F9DEF439172F194500A903E0 /* libsqlite3.dylib */,
+				F9DEF42D172EE1B800A903E0 /* Security.framework */,
 				A0A92CFD16164C5700D36362 /* AdSupport.framework */,
 				A03DE250160E55B6003CF127 /* Social.framework */,
 				A03DE24E160E55AE003CF127 /* Accounts.framework */,
@@ -589,7 +597,7 @@
 				A0DA12FF165F0CF5006351B4 /* scorestub_odd.png in Resources */,
 				A0DA1301165F0D38006351B4 /* scorestub_even.png in Resources */,
 				A0DA1303165FC6AA006351B4 /* mainmenu_button.png in Resources */,
-				A0DFFBAB16FCAF0B007FAF8C /* FacebookSDKResources.bundle in Resources */,
+				F9DEF438172F18F500A903E0 /* FacebookSDKResources.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -712,6 +720,7 @@
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "friendSmasher/friendSmasher-Prefix.pch";
@@ -737,6 +746,7 @@
 					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
 					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "friendSmasher/friendSmasher-Prefix.pch";

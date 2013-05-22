@@ -19,7 +19,6 @@
 @implementation AppDelegate
 
 @synthesize window = _window;
-@synthesize openedURL = _openedURL;
 
 - (void)dealloc
 {
@@ -37,11 +36,14 @@
             openURL:(NSURL *)url
   sourceApplication:(NSString *)sourceApplication
          annotation:(id)annotation {
-    // attempt to extract a token from the url
-    self.openedURL = url;
-    [[FBSession activeSession] handleOpenURL:url];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:APP_HANDLED_URL object:nil];    
+    [FBAppCall handleOpenURL:url sourceApplication:sourceApplication fallbackHandler:^(FBAppCall *call) {
+      
+      if (call.appLinkData && call.appLinkData.targetURL) {
+        [[NSNotificationCenter defaultCenter] postNotificationName:APP_HANDLED_URL object:call.appLinkData.targetURL];
+      }
+      
+    }];
     
     return YES;
 }
@@ -71,7 +73,7 @@
 
 - (void)applicationDidBecomeActive:(UIApplication *)application
 {
-    [FBSession.activeSession handleDidBecomeActive];
+  [FBAppCall handleDidBecomeActive];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application

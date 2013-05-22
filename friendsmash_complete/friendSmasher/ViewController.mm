@@ -42,9 +42,10 @@ static float fScaleFactor = 1.f;
     [super dealloc];
 }
 
-- (void)handledURL{
+- (void)handledURL: (NSNotification *)deepLinkNotification{
     if (pGameController) {
-        pGameController->FB_ProcessIncomingURL();
+      NSURL *targetURL = deepLinkNotification.object;
+      pGameController->FB_ProcessIncomingURL(targetURL);
     }
 }
 
@@ -81,7 +82,7 @@ static float fScaleFactor = 1.f;
     pGameController->OnEnter();
     
     [[NSNotificationCenter defaultCenter] removeObserver:self];
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handledURL) name:APP_HANDLED_URL object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(handledURL:) name:APP_HANDLED_URL object:nil];
 }
 
 

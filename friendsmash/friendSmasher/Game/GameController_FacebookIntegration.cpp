@@ -40,15 +40,15 @@ namespace FriendSmasher
         {
         }
         
-        void GameController::FB_ProcessIncomingURL()
+        void GameController::FB_ProcessIncomingURL(NSURL* targetURL)
         {
         }
         
-        void GameController::FB_ProcessIncomingRequest(NSString* urlString)
+        void GameController::FB_ProcessIncomingRequest(NSURL* targetURL)
         {
         }
         
-        void GameController::FB_ProcessIncomingFeed(NSString* urlString)
+        void GameController::FB_ProcessIncomingFeed(NSURL* targetURL)
         {
         }
         
