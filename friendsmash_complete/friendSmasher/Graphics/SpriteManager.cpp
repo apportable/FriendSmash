@@ -19,6 +19,10 @@
 #include <algorithm>
 #include "debug.h"
 
+#ifdef APPORTABLE
+#include <stdlib.h>
+#endif
+
 #include "ShaderProgram.h"
 #include "GenericShaders.h"
 #include "vec2_op.h"
@@ -398,7 +402,11 @@ namespace FriendSmasher
         
         void SpriteManager::SortList()
         {	
+#ifdef APPORTABLE
+            qsort( (void*)m_apSprites, m_uNumSprites, sizeof(Sprite*), qsortSpriteCompare );
+#else
             std::qsort( (void*)m_apSprites, m_uNumSprites, sizeof(Sprite*), qsortSpriteCompare );
+#endif
         }
         
         void SpriteManager::AddSprite(Sprite* pSprite)

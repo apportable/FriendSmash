@@ -13,6 +13,9 @@
 int main(int argc, char *argv[])
 {
     @autoreleasepool {
+#ifdef APPORTABLE
+        [[UIScreen mainScreen] setCurrentMode: [UIScreenMode emulatedMode:UIScreenBestEmulationMode]];
+#endif
         return UIApplicationMain(argc, argv, nil, NSStringFromClass([AppDelegate class]));
     }
 }

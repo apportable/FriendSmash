@@ -3,6 +3,9 @@
 #import <OpenGLES/ES2/gl.h>
 #import <OpenGLES/ES2/glext.h>
 
+#ifdef APPORTABLE
+#include <stdlib.h>
+#endif
 
 //------------------------------------------------------------------------
 

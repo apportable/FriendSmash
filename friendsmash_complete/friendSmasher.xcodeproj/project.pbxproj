@@ -15,7 +15,6 @@
 		A009E4A215B578A8000604D1 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = A009E4A015B578A8000604D1 /* InfoPlist.strings */; };
 		A009E4A415B578A8000604D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A009E4A315B578A8000604D1 /* main.m */; };
 		A009E4A815B578A8000604D1 /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = A009E4A715B578A8000604D1 /* AppDelegate.mm */; };
-		A009E4AB15B578A8000604D1 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A009E4A915B578A8000604D1 /* MainStoryboard.storyboard */; };
 		A009E4B215B578A8000604D1 /* ViewController.mm in Sources */ = {isa = PBXBuildFile; fileRef = A009E4B115B578A8000604D1 /* ViewController.mm */; };
 		A009E50115B579A4000604D1 /* File.cpp in Sources */ = {isa = PBXBuildFile; fileRef = A009E4BB15B579A4000604D1 /* File.cpp */; };
 		A009E50215B579A4000604D1 /* File_iPhoneCore.mm in Sources */ = {isa = PBXBuildFile; fileRef = A009E4BE15B579A4000604D1 /* File_iPhoneCore.mm */; };
@@ -105,7 +104,6 @@
 		A009E4A515B578A8000604D1 /* friendSmasher-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "friendSmasher-Prefix.pch"; sourceTree = "<group>"; };
 		A009E4A615B578A8000604D1 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A009E4A715B578A8000604D1 /* AppDelegate.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = AppDelegate.mm; sourceTree = "<group>"; };
-		A009E4AA15B578A8000604D1 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
 		A009E4B015B578A8000604D1 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
 		A009E4B115B578A8000604D1 /* ViewController.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = ViewController.mm; sourceTree = "<group>"; };
 		A009E4BB15B579A4000604D1 /* File.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; lineEnding = 0; path = File.cpp; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.cpp; };
@@ -295,7 +293,6 @@
 			children = (
 				A009E4A615B578A8000604D1 /* AppDelegate.h */,
 				A009E4A715B578A8000604D1 /* AppDelegate.mm */,
-				A009E4A915B578A8000604D1 /* MainStoryboard.storyboard */,
 				A009E4B015B578A8000604D1 /* ViewController.h */,
 				A009E4B115B578A8000604D1 /* ViewController.mm */,
 				A009E49E15B578A8000604D1 /* Supporting Files */,
@@ -562,7 +559,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A009E4A215B578A8000604D1 /* InfoPlist.strings in Resources */,
-				A009E4AB15B578A8000604D1 /* MainStoryboard.storyboard in Resources */,
 				A070788A15B8E4F200EE7002 /* nonfriend_1.png in Resources */,
 				A070788B15B8E4F200EE7002 /* nonfriend_2.png in Resources */,
 				A070788C15B8E4F200EE7002 /* nonfriend_3.png in Resources */,
@@ -657,14 +653,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		A009E4A915B578A8000604D1 /* MainStoryboard.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				A009E4AA15B578A8000604D1 /* en */,
-			);
-			name = MainStoryboard.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -675,6 +663,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../build";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
@@ -699,6 +688,7 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
+				FRAMEWORK_SEARCH_PATHS = "$(SRCROOT)/../../../build";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
@@ -716,10 +706,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
-					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
-					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
-					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+					"$(SRCROOT)/../../../build",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -742,10 +729,7 @@
 			buildSettings = {
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/../../Documents/FacebookSDK\"",
-					"\"$(SRCROOT)/../../../../../Documents/FacebookSDK\"",
-					"\"$(SRCROOT)/../../../Documents/FacebookSDK\"",
-					"\"$(SRCROOT)/../../../../Documents/FacebookSDK\"",
+					"$(SRCROOT)/../../../build",
 					"\"$(SRCROOT)\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

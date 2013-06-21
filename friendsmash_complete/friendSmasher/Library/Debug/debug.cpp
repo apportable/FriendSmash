@@ -16,6 +16,10 @@
 
 #include <stdio.h>
 
+#ifdef APPORTABLE
+#include <stdlib.h>
+#endif
+
 #include "debug.h"
 
 namespace FriendSmasher
