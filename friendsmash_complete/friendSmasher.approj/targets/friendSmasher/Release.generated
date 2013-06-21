@@ -1,0 +1,720 @@
+{
+    "xcode_project": "friendSmasher.xcodeproj", 
+    "sources": [
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/AppDelegate.mm", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/NSObject+SBJson.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonParser.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamParser.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamParserAccumulator.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamParserAdapter.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamParserState.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamWriter.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamWriterAccumulator.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonStreamWriterState.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonTokeniser.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonUTF8Stream.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Classes/SBJsonWriter.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/File/File.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/File/File_iPhoneCore.mm", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Game/GameController.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Game/GameController_FacebookIntegration.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/Game/ImageFetcher.m", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/ConfettiEffect.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/ConfettiEffect_OpenGLES2.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/GenericShaders.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/Graphics.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/ShaderProgram.mm", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/Sprite.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/SpriteManager.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Graphics/TextureResource.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Debug/debug.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Math/mtx33.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Math/mtx44.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Math/vec2.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Math/vec3.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Math/vec4.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "c++", 
+            "header_paths": [], 
+            "source": "friendSmasher/Library/Random/random.cpp", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc++", 
+            "header_paths": [], 
+            "source": "friendSmasher/ViewController.mm", 
+            "flags": [], 
+            "defines": {}
+        }, 
+        {
+            "language": "objc", 
+            "header_paths": [], 
+            "source": "friendSmasher/main.m", 
+            "flags": [], 
+            "defines": {}
+        }
+    ], 
+    "infoplists": [
+        "./friendSmasher/friendSmasher-Info.plist"
+    ], 
+    "libs": [
+        "sqlite3.0"
+    ], 
+    "defines": {
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50100, 
+        "NS_BLOCK_ASSERTIONS": 1
+    }, 
+    "pchs": [
+        "./friendSmasher/friendSmasher-Prefix.pch"
+    ], 
+    "assets": [
+        {
+            "asset": "friendSmasher/Art/nonfriend_3.png", 
+            "target": "nonfriend_3.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_2.png", 
+            "target": "nonfriend_2.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_4.png", 
+            "target": "nonfriend_4.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_1.png", 
+            "target": "nonfriend_1.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_6.png", 
+            "target": "nonfriend_6.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_5.png", 
+            "target": "nonfriend_5.png"
+        }, 
+        {
+            "asset": "friendSmasher/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_7.png", 
+            "target": "nonfriend_7.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_8.png", 
+            "target": "nonfriend_8.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_9.png", 
+            "target": "nonfriend_9.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_10.png", 
+            "target": "nonfriend_10.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/sparkleparticle.tga", 
+            "target": "sparkleparticle.tga"
+        }, 
+        {
+            "asset": "friendSmasher/Art/sparkleoutterparticle.tga", 
+            "target": "sparkleoutterparticle.tga"
+        }, 
+        {
+            "asset": "Icon@2x.png", 
+            "target": "Icon@2x.png"
+        }, 
+        {
+            "asset": "Icon.png", 
+            "target": "Icon.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/frontscreen_background.png", 
+            "target": "frontscreen_background.png"
+        }, 
+        {
+            "asset": "default@2x.png", 
+            "target": "default@2x.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/logo.png", 
+            "target": "logo.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/playnow_button.png", 
+            "target": "playnow_button.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/welcome_panel.png", 
+            "target": "welcome_panel.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/Avenir.ttc", 
+            "target": "Avenir.ttc"
+        }, 
+        {
+            "asset": "friendSmasher/Art/login_button.png", 
+            "target": "login_button.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/logout_button.png", 
+            "target": "logout_button.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/brag_button.png", 
+            "target": "brag_button.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/challenge_button.png", 
+            "target": "challenge_button.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/heart_red.tga", 
+            "target": "heart_red.tga"
+        }, 
+        {
+            "asset": "friendSmasher/Art/isloading.png", 
+            "target": "isloading.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/loadingspinner.tga", 
+            "target": "loadingspinner.tga"
+        }, 
+        {
+            "asset": "friendSmasher/Art/plus_1.tga", 
+            "target": "plus_1.tga"
+        }, 
+        {
+            "asset": "friendSmasher/Art/plus_2.tga", 
+            "target": "plus_2.tga"
+        }, 
+        {
+            "asset": "friendSmasher/Art/plus_3.tga", 
+            "target": "plus_3.tga"
+        }, 
+        {
+            "asset": "friendSmasher/Art/scores_button.png", 
+            "target": "scores_button.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/scorestub_odd.png", 
+            "target": "scorestub_odd.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/scorestub_even.png", 
+            "target": "scorestub_even.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/mainmenu_button.png", 
+            "target": "mainmenu_button.png"
+        }, 
+        {
+            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle", 
+            "target": "FacebookSDKResources.bundle"
+        }
+    ], 
+    "type": "app", 
+    "header_paths": [
+        {
+            "type": "iquote", 
+            "header_path": "friendSmasher-generated-files.hmap", 
+            "hmap": {}
+        }, 
+        {
+            "type": "I", 
+            "header_path": "friendSmasher-own-target-headers.hmap", 
+            "hmap": {}
+        }, 
+        {
+            "type": "I", 
+            "header_path": "friendSmasher-all-target-headers.hmap", 
+            "hmap": {}
+        }, 
+        {
+            "type": "iquote", 
+            "header_path": "friendSmasher-project-headers.hmap", 
+            "hmap": {
+                "SBJsonStreamParserState.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParserState.h", 
+                    "key": "SBJsonStreamParserState.h"
+                }, 
+                "mtx33_op.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx33_op.h", 
+                    "key": "mtx33_op.h"
+                }, 
+                "SpriteManager.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "SpriteManager.h", 
+                    "key": "SpriteManager.h"
+                }, 
+                "SBJsonTokeniser.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonTokeniser.h", 
+                    "key": "SBJsonTokeniser.h"
+                }, 
+                "SBJsonStreamParserAccumulator.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParserAccumulator.h", 
+                    "key": "SBJsonStreamParserAccumulator.h"
+                }, 
+                "ShaderProgram.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "ShaderProgram.h", 
+                    "key": "ShaderProgram.h"
+                }, 
+                "SBJson.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJson.h", 
+                    "key": "SBJson.h"
+                }, 
+                "vec3_op.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec3_op.h", 
+                    "key": "vec3_op.h"
+                }, 
+                "mtx44.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx44.h", 
+                    "key": "mtx44.h"
+                }, 
+                "ImageFetcher.h": {
+                    "prefix": "friendSmasher/Game/", 
+                    "suffix": "ImageFetcher.h", 
+                    "key": "ImageFetcher.h"
+                }, 
+                "SBJsonParser.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonParser.h", 
+                    "key": "SBJsonParser.h"
+                }, 
+                "SBJsonUTF8Stream.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonUTF8Stream.h", 
+                    "key": "SBJsonUTF8Stream.h"
+                }, 
+                "ConfettiEffect.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "ConfettiEffect.h", 
+                    "key": "ConfettiEffect.h"
+                }, 
+                "File.h": {
+                    "prefix": "friendSmasher/File/", 
+                    "suffix": "File.h", 
+                    "key": "File.h"
+                }, 
+                "SBJsonWriter.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonWriter.h", 
+                    "key": "SBJsonWriter.h"
+                }, 
+                "vec4.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec4.h", 
+                    "key": "vec4.h"
+                }, 
+                "math_op.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "math_op.h", 
+                    "key": "math_op.h"
+                }, 
+                "ImageFetcherDelegate.h": {
+                    "prefix": "friendSmasher/Game/", 
+                    "suffix": "ImageFetcherDelegate.h", 
+                    "key": "ImageFetcherDelegate.h"
+                }, 
+                "AppDelegate.h": {
+                    "prefix": "friendSmasher/", 
+                    "suffix": "AppDelegate.h", 
+                    "key": "AppDelegate.h"
+                }, 
+                "vec2.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec2.h", 
+                    "key": "vec2.h"
+                }, 
+                "Sprite.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "Sprite.h", 
+                    "key": "Sprite.h"
+                }, 
+                "null.h": {
+                    "prefix": "friendSmasher/Library/Null/", 
+                    "suffix": "null.h", 
+                    "key": "null.h"
+                }, 
+                "vec3.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec3.h", 
+                    "key": "vec3.h"
+                }, 
+                "math_lib.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "math_lib.h", 
+                    "key": "math_lib.h"
+                }, 
+                "mtx44_op.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx44_op.h", 
+                    "key": "mtx44_op.h"
+                }, 
+                "SBJsonStreamWriterState.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamWriterState.h", 
+                    "key": "SBJsonStreamWriterState.h"
+                }, 
+                "SBJsonStreamParser.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParser.h", 
+                    "key": "SBJsonStreamParser.h"
+                }, 
+                "ConfettiEffect_OpenGLES2.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "ConfettiEffect_OpenGLES2.h", 
+                    "key": "ConfettiEffect_OpenGLES2.h"
+                }, 
+                "GameController.h": {
+                    "prefix": "friendSmasher/Game/", 
+                    "suffix": "GameController.h", 
+                    "key": "GameController.h"
+                }, 
+                "SBJsonStreamWriter.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamWriter.h", 
+                    "key": "SBJsonStreamWriter.h"
+                }, 
+                "SBJsonStreamWriterAccumulator.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamWriterAccumulator.h", 
+                    "key": "SBJsonStreamWriterAccumulator.h"
+                }, 
+                "ViewController.h": {
+                    "prefix": "friendSmasher/", 
+                    "suffix": "ViewController.h", 
+                    "key": "ViewController.h"
+                }, 
+                "vec4_op.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec4_op.h", 
+                    "key": "vec4_op.h"
+                }, 
+                "mtx33.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx33.h", 
+                    "key": "mtx33.h"
+                }, 
+                "Graphics.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "Graphics.h", 
+                    "key": "Graphics.h"
+                }, 
+                "File_iPhoneCore.h": {
+                    "prefix": "friendSmasher/File/", 
+                    "suffix": "File_iPhoneCore.h", 
+                    "key": "File_iPhoneCore.h"
+                }, 
+                "TextureResource.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "TextureResource.h", 
+                    "key": "TextureResource.h"
+                }, 
+                "debug.h": {
+                    "prefix": "friendSmasher/Library/Debug/", 
+                    "suffix": "debug.h", 
+                    "key": "debug.h"
+                }, 
+                "vec2_op.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec2_op.h", 
+                    "key": "vec2_op.h"
+                }, 
+                "NSObject+SBJson.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "NSObject+SBJson.h", 
+                    "key": "NSObject+SBJson.h"
+                }, 
+                "type_defs.h": {
+                    "prefix": "friendSmasher/Library/Definitions/", 
+                    "suffix": "type_defs.h", 
+                    "key": "type_defs.h"
+                }, 
+                "math_def.h": {
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "math_def.h", 
+                    "key": "math_def.h"
+                }, 
+                "SBJsonStreamParserAdapter.h": {
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParserAdapter.h", 
+                    "key": "SBJsonStreamParserAdapter.h"
+                }, 
+                "friendSmasher-Prefix.pch": {
+                    "prefix": "friendSmasher/", 
+                    "suffix": "friendSmasher-Prefix.pch", 
+                    "key": "friendSmasher-Prefix.pch"
+                }, 
+                "random.h": {
+                    "prefix": "friendSmasher/Library/Random/", 
+                    "suffix": "random.h", 
+                    "key": "random.h"
+                }, 
+                "GenericShaders.h": {
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "GenericShaders.h", 
+                    "key": "GenericShaders.h"
+                }
+            }
+        }
+    ], 
+    "modules": [], 
+    "version": "1", 
+    "flags": [
+        "-DNS_BLOCK_ASSERTIONS=1", 
+        "-fwritable-strings", 
+        "-fasm-blocks", 
+        {
+            "flag": "-std=gnu99", 
+            "not_type": "c++"
+        }, 
+        {
+            "flag": "-fgnu-keywords", 
+            "not_type": "c++"
+        }, 
+        "-fno-asm", 
+        "-fpascal-strings", 
+        "-Wno-deprecated-declarations", 
+        "-Wreturn-type", 
+        "-Wswitch", 
+        "-Wparentheses", 
+        "-Wformat", 
+        "-Wuninitialized", 
+        "-Wunused-value", 
+        "-Wunused-variable", 
+        {
+            "flag": "-Winvalid-offsetof", 
+            "type": "c++"
+        }, 
+        {
+            "flag": "-Wprotocol", 
+            "type": "objc"
+        }
+    ], 
+    "deps": [
+        "UIKit", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "GLKit", 
+        "OpenGLES", 
+        "FacebookSDK"
+    ], 
+    "config": {
+        "URL_SCHEME": [
+            "fb480369938658210", 
+            "fb480369938658210"
+        ], 
+        "APPLICATION_IDENTIFIER": "facebook.samples.FriendSmash", 
+        "TEMPLATE_VALUES": {
+            "EXECUTABLE_NAME": "friendSmasher", 
+            "PRODUCT_NAME": "friendSmasher"
+        }, 
+        "LONG_VERSION": "1.0", 
+        "SHORT_VERSION": "1.0", 
+        "APPLICATION_NAME": "friendSmasher", 
+        "APPLICATION_FULL_NAME": "friendSmasher"
+    }
+}
