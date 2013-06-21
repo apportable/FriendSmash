@@ -148,9 +148,10 @@
     // A list of header search paths
     // e.g. "./External/facebook-sdk/include"
     "header_paths": [
-        "../../../src",
-        "../../../src/Base64",
-        "../../../src/Cryptography",
+        "..",
+        "../facebook-ios-sdk/src",
+        "../facebook-ios-sdk/src/Base64",
+        "../facebook-ios-sdk/src/Cryptography",
     ],
     
     // A list of global compile flags for the project.
@@ -188,9 +189,9 @@
     // This can also be used to replace flags on multiple files.
     // e.g. {"source":"./Server/Level_[0-9].m","flags": ["-fno-objc-arc"],  "defines": {"NDEBUG": 1}}
     "sources_glob":[
-        "../../../src/*.m",
-        "../../../src/Base64/*.m",
-        "../../../src/Cryptography/*.m",
+        "../facebook-ios-sdk/src/*.m",
+        "../facebook-ios-sdk/src/Base64/*.m",
+        "../facebook-ios-sdk/src/Cryptography/*.m",
     ],
     
     // A list of assets to package with the application.
