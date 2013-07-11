@@ -280,7 +280,7 @@ namespace FriendSmasher
             m_pLoadingSprite->SetPosition(Math::vec2(210.f, 460.f));
             
             System::TextureResource* pLoadingSpinnerTextureResource = new System::TextureResource();
-            pLoadingSpinnerTextureResource->CreateFromFile("Art/loadingspinner.tga");
+            pLoadingSpinnerTextureResource->CreateFromFile("Art/loadingspinner.png");
             m_pLoadingSpinner = new System::Sprite(pLoadingSpinnerTextureResource);
             m_pLoadingSpinner->SetDraw(false);
             m_pLoadingSpinner->SetLayer(10);
@@ -289,7 +289,7 @@ namespace FriendSmasher
             
             
             System::TextureResource* pHeartTextureResource = new System::TextureResource();
-            pHeartTextureResource->CreateFromFile("Art/heart_red.tga");
+            pHeartTextureResource->CreateFromFile("Art/heart_red.png");
             
             for (u32 i=0; i<3; ++i)
             {
@@ -308,13 +308,13 @@ namespace FriendSmasher
             }
                         
             m_pRiserTextures[0] = new System::TextureResource();
-            m_pRiserTextures[0]->CreateFromFile("Art/plus_1.tga");
+            m_pRiserTextures[0]->CreateFromFile("Art/plus_1.png");
             
             m_pRiserTextures[1] = new System::TextureResource();
-            m_pRiserTextures[1]->CreateFromFile("Art/plus_2.tga");
+            m_pRiserTextures[1]->CreateFromFile("Art/plus_2.png");
             
             m_pRiserTextures[2] = new System::TextureResource();
-            m_pRiserTextures[2]->CreateFromFile("Art/plus_3.tga");
+            m_pRiserTextures[2]->CreateFromFile("Art/plus_3.png");
                         
             m_confettiEffect = ConfettiEffect::Create( 256 );
 			m_confettiEffect->SetMaxParticlesPerFrame( 256 );

@@ -266,20 +266,20 @@
             "target": "nonfriend_2.png"
         }, 
         {
-            "asset": "friendSmasher/Art/nonfriend_1.png", 
-            "target": "nonfriend_1.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/nonfriend_5.png", 
-            "target": "nonfriend_5.png"
-        }, 
-        {
             "asset": "friendSmasher/Art/nonfriend_4.png", 
             "target": "nonfriend_4.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_3.png", 
             "target": "nonfriend_3.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_5.png", 
+            "target": "nonfriend_5.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_1.png", 
+            "target": "nonfriend_1.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_6.png", 
@@ -304,14 +304,6 @@
         {
             "asset": "friendSmasher/Art/nonfriend_10.png", 
             "target": "nonfriend_10.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/sparkleparticle.tga", 
-            "target": "sparkleparticle.tga"
-        }, 
-        {
-            "asset": "friendSmasher/Art/sparkleoutterparticle.tga", 
-            "target": "sparkleoutterparticle.tga"
         }, 
         {
             "asset": "Icon@2x.png", 
@@ -362,28 +354,8 @@
             "target": "challenge_button.png"
         }, 
         {
-            "asset": "friendSmasher/Art/heart_red.tga", 
-            "target": "heart_red.tga"
-        }, 
-        {
             "asset": "friendSmasher/Art/isloading.png", 
             "target": "isloading.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/loadingspinner.tga", 
-            "target": "loadingspinner.tga"
-        }, 
-        {
-            "asset": "friendSmasher/Art/plus_1.tga", 
-            "target": "plus_1.tga"
-        }, 
-        {
-            "asset": "friendSmasher/Art/plus_2.tga", 
-            "target": "plus_2.tga"
-        }, 
-        {
-            "asset": "friendSmasher/Art/plus_3.tga", 
-            "target": "plus_3.tga"
         }, 
         {
             "asset": "friendSmasher/Art/scores_button.png", 
@@ -404,6 +376,38 @@
         {
             "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle", 
             "target": "FacebookSDKResources.bundle"
+        }, 
+        {
+            "asset": "friendSmasher/Art/cross_red.png", 
+            "target": "cross_red.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/heart_red.png", 
+            "target": "heart_red.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/loadingspinner.png", 
+            "target": "loadingspinner.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/plus_1.png", 
+            "target": "plus_1.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/plus_2.png", 
+            "target": "plus_2.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/plus_3.png", 
+            "target": "plus_3.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/sparkleoutterparticle.png", 
+            "target": "sparkleoutterparticle.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/sparkleparticle.png", 
+            "target": "sparkleparticle.png"
         }
     ], 
     "type": "app", 
