@@ -24,7 +24,7 @@
 	<key>CFBundleIdentifier</key>
 	<string>facebook.samples.FriendSmash</string>
 	<key>FacebookAppID</key>
-	<string>480369938658210</string>
+	<string>275317065940751</string>
 	<key>FacebookDisplayName</key>
 	<string>Friend Smash!</string>
 	<key>CFBundleURLTypes</key>
@@ -32,7 +32,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>fb480369938658210</string>
+				<string>fb275317065940751</string>
 			</array>
 		</dict>
 	</array>

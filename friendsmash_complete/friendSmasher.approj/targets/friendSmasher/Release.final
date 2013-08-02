@@ -6,24 +6,24 @@
     ], 
     "assets": [
         {
-            "asset": "friendSmasher/Art/nonfriend_1.png", 
-            "target": "nonfriend_1.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/nonfriend_3.png", 
-            "target": "nonfriend_3.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/nonfriend_6.png", 
-            "target": "nonfriend_6.png"
+            "asset": "friendSmasher/Art/nonfriend_4.png", 
+            "target": "nonfriend_4.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_2.png", 
             "target": "nonfriend_2.png"
         }, 
         {
-            "asset": "friendSmasher/Art/nonfriend_4.png", 
-            "target": "nonfriend_4.png"
+            "asset": "friendSmasher/Art/nonfriend_1.png", 
+            "target": "nonfriend_1.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_6.png", 
+            "target": "nonfriend_6.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_3.png", 
+            "target": "nonfriend_3.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_5.png", 
@@ -106,80 +106,16 @@
             "target": "scores_button.png"
         }, 
         {
-            "asset": "friendSmasher/Art/scorestub_odd.png", 
-            "target": "scorestub_odd.png"
-        }, 
-        {
             "asset": "friendSmasher/Art/scorestub_even.png", 
             "target": "scorestub_even.png"
         }, 
         {
+            "asset": "friendSmasher/Art/scorestub_odd.png", 
+            "target": "scorestub_odd.png"
+        }, 
+        {
             "asset": "friendSmasher/Art/mainmenu_button.png", 
             "target": "mainmenu_button.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/Contents/Resources/en.lproj/Localizable.strings", 
-            "target": "FacebookSDKResources.bundle/Contents/Resources/en.lproj/Localizable.strings"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/Contents/Resources/he.lproj/Localizable.strings", 
-            "target": "FacebookSDKResources.bundle/Contents/Resources/he.lproj/Localizable.strings"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBDialog/images/close.png", 
-            "target": "FacebookSDKResources.bundle/FBDialog/images/close.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBDialog/images/close@2x.png", 
-            "target": "FacebookSDKResources.bundle/FBDialog/images/close@2x.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBDialog/images/fbicon.png", 
-            "target": "FacebookSDKResources.bundle/FBDialog/images/fbicon.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBFriendPickerView/images/default.png", 
-            "target": "FacebookSDKResources.bundle/FBFriendPickerView/images/default.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/bluetint.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/bluetint.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/f_logo.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/f_logo.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/facebook.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/facebook.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/login-button-small-pressed.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/login-button-small-pressed.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/login-button-small-pressed@2x.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/login-button-small-pressed@2x.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/login-button-small.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/login-button-small.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBLoginView/images/login-button-small@2x.png", 
-            "target": "FacebookSDKResources.bundle/FBLoginView/images/login-button-small@2x.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBPlacePickerView/images/fb_generic_place.png", 
-            "target": "FacebookSDKResources.bundle/FBPlacePickerView/images/fb_generic_place.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBProfilePictureView/images/fb_blank_profile_portrait.png", 
-            "target": "FacebookSDKResources.bundle/FBProfilePictureView/images/fb_blank_profile_portrait.png"
-        }, 
-        {
-            "asset": "../../../Documents/FacebookSDK/FacebookSDK.framework/Versions/A/Resources/FacebookSDKResources.bundle/FBProfilePictureView/images/fb_blank_profile_square.png", 
-            "target": "FacebookSDKResources.bundle/FBProfilePictureView/images/fb_blank_profile_square.png"
         }, 
         {
             "asset": "friendSmasher/Art/cross_red.png", 

@@ -24,7 +24,7 @@ namespace FriendSmasher
     namespace Game
     {
         
-        static const u64 kuFBAppID = 480369938658210;
+        static const u64 kuFBAppID = 275317065940751;
         
         // Create a Facebook session for a given set of permissions
         void GameController::FB_CreateNewSession()

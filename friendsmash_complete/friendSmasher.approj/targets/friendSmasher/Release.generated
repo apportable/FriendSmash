@@ -262,24 +262,24 @@
     ], 
     "assets": [
         {
-            "asset": "friendSmasher/Art/nonfriend_1.png", 
-            "target": "nonfriend_1.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/nonfriend_3.png", 
-            "target": "nonfriend_3.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/nonfriend_6.png", 
-            "target": "nonfriend_6.png"
+            "asset": "friendSmasher/Art/nonfriend_4.png", 
+            "target": "nonfriend_4.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_2.png", 
             "target": "nonfriend_2.png"
         }, 
         {
-            "asset": "friendSmasher/Art/nonfriend_4.png", 
-            "target": "nonfriend_4.png"
+            "asset": "friendSmasher/Art/nonfriend_1.png", 
+            "target": "nonfriend_1.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_6.png", 
+            "target": "nonfriend_6.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/nonfriend_3.png", 
+            "target": "nonfriend_3.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_5.png", 
@@ -362,12 +362,12 @@
             "target": "scores_button.png"
         }, 
         {
-            "asset": "friendSmasher/Art/scorestub_odd.png", 
-            "target": "scorestub_odd.png"
-        }, 
-        {
             "asset": "friendSmasher/Art/scorestub_even.png", 
             "target": "scorestub_even.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/scorestub_odd.png", 
+            "target": "scorestub_odd.png"
         }, 
         {
             "asset": "friendSmasher/Art/mainmenu_button.png", 
