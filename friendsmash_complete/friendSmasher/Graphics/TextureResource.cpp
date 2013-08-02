@@ -122,7 +122,7 @@ namespace FriendSmasher
                 newSize.width = m_uWidth;
                 newSize.height = m_uHeight;
              
-                UIGraphicsBeginImageContextWithOptions(newSize, NO, 0.0);
+                UIGraphicsBeginImageContextWithOptions(newSize, NO, 1.0);
                 [image drawInRect:CGRectMake(0, 0, newSize.width, newSize.height)];
                 UIImage *resizednewImage = UIGraphicsGetImageFromCurrentImageContext();    
                 UIGraphicsEndImageContext();
