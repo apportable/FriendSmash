@@ -4,7 +4,11 @@ Authors: Ali Parr (aliparr)
 
 ## Installing
 
-Before running the sample, please see the Getting Started on iOS guide, available here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/3.1/
+Before running the sample, please get the FacebookSDK :
+    git submodule init
+    git submodule update
+
+Also please see the Getting Started on iOS guide, available here: https://developers.facebook.com/docs/getting-started/facebook-sdk-for-ios/3.1/
 In particular, follow the 'Adding SDK & framework dependencies' section of the guide.
 
 
