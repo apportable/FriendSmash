@@ -57,7 +57,7 @@
     //   "write_external_storage"
     //   "write_settings"
     //   "xperia"
-    "FEATURES": ["opengles2","portrait"],
+    "FEATURES": ["opengles2","portrait","true_color"],
 
     // Preferred way of handling URLs in the code.
     // Leave it null for most cases.
