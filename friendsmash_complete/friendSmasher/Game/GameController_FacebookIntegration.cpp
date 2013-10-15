@@ -19,6 +19,10 @@
 #include <Social/SLComposeViewController.h>
 #include "SBJson.h"
 
+#ifdef ANDROID
+@class SLFacebookService;
+#endif
+
 namespace FriendSmasher
 {
     namespace Game
@@ -34,6 +38,9 @@ namespace FriendSmasher
             
             FBSession* session = [[FBSession alloc] init];
             [FBSession setActiveSession: session];
+#ifdef ANDROID
+            [SLFacebookService sendTrackingCall:[NSString stringWithFormat:@"%llu", kuFBAppID]];
+#endif
         }
         
         // Attempt to open the session - perhaps tabbing over to Facebook to authorise
