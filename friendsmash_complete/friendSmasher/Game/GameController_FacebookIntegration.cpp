@@ -20,7 +20,9 @@
 #include "SBJson.h"
 
 #ifdef ANDROID
-@class SLFacebookService;
+@interface SLFacebookService : NSObject
++ (void)sendTrackingCall:(NSString *)appId;
+@end
 #endif
 
 namespace FriendSmasher
