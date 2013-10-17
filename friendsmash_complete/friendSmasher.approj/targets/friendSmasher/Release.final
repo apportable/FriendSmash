@@ -1,41 +1,36 @@
 {
-    "xcode_project": "friendSmasher.xcodeproj", 
-    "java_sources": [], 
-    "pchs": [
-        "./friendSmasher/friendSmasher-Prefix.pch"
-    ], 
     "assets": [
         {
-            "asset": "friendSmasher/Art/nonfriend_4.png", 
-            "target": "nonfriend_4.png"
-        }, 
-        {
-            "asset": "friendSmasher/Art/nonfriend_2.png", 
-            "target": "nonfriend_2.png"
+            "asset": "friendSmasher/en.lproj/InfoPlist.strings", 
+            "target": "en.lproj/InfoPlist.strings"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_1.png", 
             "target": "nonfriend_1.png"
         }, 
         {
-            "asset": "friendSmasher/Art/nonfriend_6.png", 
-            "target": "nonfriend_6.png"
+            "asset": "friendSmasher/Art/nonfriend_2.png", 
+            "target": "nonfriend_2.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_3.png", 
             "target": "nonfriend_3.png"
         }, 
         {
+            "asset": "friendSmasher/Art/nonfriend_4.png", 
+            "target": "nonfriend_4.png"
+        }, 
+        {
             "asset": "friendSmasher/Art/nonfriend_5.png", 
             "target": "nonfriend_5.png"
         }, 
         {
-            "asset": "friendSmasher/Art/nonfriend_7.png", 
-            "target": "nonfriend_7.png"
+            "asset": "friendSmasher/Art/nonfriend_6.png", 
+            "target": "nonfriend_6.png"
         }, 
         {
-            "asset": "friendSmasher/en.lproj/InfoPlist.strings", 
-            "target": "en.lproj/InfoPlist.strings"
+            "asset": "friendSmasher/Art/nonfriend_7.png", 
+            "target": "nonfriend_7.png"
         }, 
         {
             "asset": "friendSmasher/Art/nonfriend_8.png", 
@@ -106,12 +101,12 @@
             "target": "scores_button.png"
         }, 
         {
-            "asset": "friendSmasher/Art/scorestub_even.png", 
-            "target": "scorestub_even.png"
-        }, 
-        {
             "asset": "friendSmasher/Art/scorestub_odd.png", 
             "target": "scorestub_odd.png"
+        }, 
+        {
+            "asset": "friendSmasher/Art/scorestub_even.png", 
+            "target": "scorestub_even.png"
         }, 
         {
             "asset": "friendSmasher/Art/mainmenu_button.png", 
@@ -150,752 +145,46 @@
             "target": "sparkleparticle.png"
         }
     ], 
-    "link_flags": [], 
     "config": {
+        "APPLICATION_FULL_NAME": "friendSmasher", 
+        "APPLICATION_IDENTIFIER": "facebook.samples.FriendSmash", 
+        "APPLICATION_NAME": "friendSmasher", 
+        "FB_APP_ID": "275317065940751", 
         "FEATURES": [
             "opengles2", 
             "portrait", 
             "true_color"
         ], 
-        "URL_SCHEME": [
-            "fb480369938658210", 
-            "fb480369938658210"
-        ], 
-        "SHORT_VERSION": "1.0", 
-        "APPLICATION_NAME": "friendSmasher", 
         "LONG_VERSION": "1.0", 
-        "APPLICATION_IDENTIFIER": "facebook.samples.FriendSmash", 
+        "SHORT_VERSION": "1.0", 
         "TEMPLATE_VALUES": {
             "EXECUTABLE_NAME": "friendSmasher", 
             "PRODUCT_NAME": "friendSmasher"
         }, 
-        "APPLICATION_FULL_NAME": "friendSmasher"
+        "URL_SCHEME": [
+            "fb275317065940751", 
+            "fb275317065940751"
+        ]
     }, 
-    "header_paths": [
-        {
-            "header_path": "friendSmasher-generated-files.hmap", 
-            "type": "iquote", 
-            "hmap": {}
-        }, 
-        {
-            "header_path": "friendSmasher-own-target-headers.hmap", 
-            "type": "I", 
-            "hmap": {}
-        }, 
-        {
-            "header_path": "friendSmasher-all-target-headers.hmap", 
-            "type": "I", 
-            "hmap": {}
-        }, 
-        {
-            "header_path": "friendSmasher-project-headers.hmap", 
-            "type": "iquote", 
-            "hmap": {
-                "SBJsonStreamParserState.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamParserState.h", 
-                    "key": "SBJsonStreamParserState.h"
-                }, 
-                "mtx33_op.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "mtx33_op.h", 
-                    "key": "mtx33_op.h"
-                }, 
-                "SpriteManager.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "SpriteManager.h", 
-                    "key": "SpriteManager.h"
-                }, 
-                "File.h": {
-                    "prefix": "friendSmasher/File/", 
-                    "suffix": "File.h", 
-                    "key": "File.h"
-                }, 
-                "SBJsonStreamParserAccumulator.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamParserAccumulator.h", 
-                    "key": "SBJsonStreamParserAccumulator.h"
-                }, 
-                "ShaderProgram.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "ShaderProgram.h", 
-                    "key": "ShaderProgram.h"
-                }, 
-                "SBJson.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJson.h", 
-                    "key": "SBJson.h"
-                }, 
-                "vec3_op.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "vec3_op.h", 
-                    "key": "vec3_op.h"
-                }, 
-                "mtx44.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "mtx44.h", 
-                    "key": "mtx44.h"
-                }, 
-                "GameController.h": {
-                    "prefix": "friendSmasher/Game/", 
-                    "suffix": "GameController.h", 
-                    "key": "GameController.h"
-                }, 
-                "SBJsonParser.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonParser.h", 
-                    "key": "SBJsonParser.h"
-                }, 
-                "SBJsonUTF8Stream.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonUTF8Stream.h", 
-                    "key": "SBJsonUTF8Stream.h"
-                }, 
-                "SBJsonTokeniser.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonTokeniser.h", 
-                    "key": "SBJsonTokeniser.h"
-                }, 
-                "File_iPhoneCore.h": {
-                    "prefix": "friendSmasher/File/", 
-                    "suffix": "File_iPhoneCore.h", 
-                    "key": "File_iPhoneCore.h"
-                }, 
-                "vec4.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "vec4.h", 
-                    "key": "vec4.h"
-                }, 
-                "math_op.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "math_op.h", 
-                    "key": "math_op.h"
-                }, 
-                "ImageFetcherDelegate.h": {
-                    "prefix": "friendSmasher/Game/", 
-                    "suffix": "ImageFetcherDelegate.h", 
-                    "key": "ImageFetcherDelegate.h"
-                }, 
-                "vec2.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "vec2.h", 
-                    "key": "vec2.h"
-                }, 
-                "Sprite.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "Sprite.h", 
-                    "key": "Sprite.h"
-                }, 
-                "null.h": {
-                    "prefix": "friendSmasher/Library/Null/", 
-                    "suffix": "null.h", 
-                    "key": "null.h"
-                }, 
-                "vec3.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "vec3.h", 
-                    "key": "vec3.h"
-                }, 
-                "math_lib.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "math_lib.h", 
-                    "key": "math_lib.h"
-                }, 
-                "mtx44_op.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "mtx44_op.h", 
-                    "key": "mtx44_op.h"
-                }, 
-                "SBJsonStreamWriterState.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamWriterState.h", 
-                    "key": "SBJsonStreamWriterState.h"
-                }, 
-                "SBJsonStreamParser.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamParser.h", 
-                    "key": "SBJsonStreamParser.h"
-                }, 
-                "AppDelegate.h": {
-                    "prefix": "friendSmasher/", 
-                    "suffix": "AppDelegate.h", 
-                    "key": "AppDelegate.h"
-                }, 
-                "ImageFetcher.h": {
-                    "prefix": "friendSmasher/Game/", 
-                    "suffix": "ImageFetcher.h", 
-                    "key": "ImageFetcher.h"
-                }, 
-                "SBJsonStreamWriter.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamWriter.h", 
-                    "key": "SBJsonStreamWriter.h"
-                }, 
-                "SBJsonStreamWriterAccumulator.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamWriterAccumulator.h", 
-                    "key": "SBJsonStreamWriterAccumulator.h"
-                }, 
-                "ViewController.h": {
-                    "prefix": "friendSmasher/", 
-                    "suffix": "ViewController.h", 
-                    "key": "ViewController.h"
-                }, 
-                "vec4_op.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "vec4_op.h", 
-                    "key": "vec4_op.h"
-                }, 
-                "mtx33.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "mtx33.h", 
-                    "key": "mtx33.h"
-                }, 
-                "Graphics.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "Graphics.h", 
-                    "key": "Graphics.h"
-                }, 
-                "SBJsonWriter.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonWriter.h", 
-                    "key": "SBJsonWriter.h"
-                }, 
-                "ConfettiEffect.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "ConfettiEffect.h", 
-                    "key": "ConfettiEffect.h"
-                }, 
-                "TextureResource.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "TextureResource.h", 
-                    "key": "TextureResource.h"
-                }, 
-                "debug.h": {
-                    "prefix": "friendSmasher/Library/Debug/", 
-                    "suffix": "debug.h", 
-                    "key": "debug.h"
-                }, 
-                "vec2_op.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "vec2_op.h", 
-                    "key": "vec2_op.h"
-                }, 
-                "NSObject+SBJson.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "NSObject+SBJson.h", 
-                    "key": "NSObject+SBJson.h"
-                }, 
-                "ConfettiEffect_OpenGLES2.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "ConfettiEffect_OpenGLES2.h", 
-                    "key": "ConfettiEffect_OpenGLES2.h"
-                }, 
-                "GenericShaders.h": {
-                    "prefix": "friendSmasher/Graphics/", 
-                    "suffix": "GenericShaders.h", 
-                    "key": "GenericShaders.h"
-                }, 
-                "math_def.h": {
-                    "prefix": "friendSmasher/Library/Math/", 
-                    "suffix": "math_def.h", 
-                    "key": "math_def.h"
-                }, 
-                "SBJsonStreamParserAdapter.h": {
-                    "prefix": "friendSmasher/Classes/", 
-                    "suffix": "SBJsonStreamParserAdapter.h", 
-                    "key": "SBJsonStreamParserAdapter.h"
-                }, 
-                "friendSmasher-Prefix.pch": {
-                    "prefix": "friendSmasher/", 
-                    "suffix": "friendSmasher-Prefix.pch", 
-                    "key": "friendSmasher-Prefix.pch"
-                }, 
-                "random.h": {
-                    "prefix": "friendSmasher/Library/Random/", 
-                    "suffix": "random.h", 
-                    "key": "random.h"
-                }, 
-                "type_defs.h": {
-                    "prefix": "friendSmasher/Library/Definitions/", 
-                    "suffix": "type_defs.h", 
-                    "key": "type_defs.h"
-                }
-            }
-        }, 
-        "..", 
-        "../facebook-ios-sdk/src", 
-        "../facebook-ios-sdk/src/Base64", 
-        "../facebook-ios-sdk/src/Cryptography"
+    "defines": {
+        "NS_BLOCK_ASSERTIONS": 1, 
+        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50100
+    }, 
+    "deps": [
+        "UIKit", 
+        "UIKit", 
+        "Foundation", 
+        "CoreGraphics", 
+        "GLKit", 
+        "OpenGLES", 
+        "Accounts", 
+        "AdSupport", 
+        "CoreLocation", 
+        "Social", 
+        "sqlite"
     ], 
-    "modules": [], 
-    "sources": [
-        {
-            "source": "../facebook-ios-sdk/src/FBSessionInsightsState.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBDialogs.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBAppCall.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBSessionTokenCachingStrategy.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBSessionManualTokenCachingStrategy.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonParser.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/Facebook.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBWebDialogs.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBPlacePickerViewController.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Graphics/TextureResource.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamWriterAccumulator.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamWriterState.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBLogger.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Library/Math/mtx44.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBDialog.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Library/Math/mtx33.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBRequestBody.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBCacheIndex.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBRequestConnection.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBDataDiskCache.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Graphics/ConfettiEffect_OpenGLES2.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBOpenGraphActionShareDialogParams.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBUserSettingsViewController.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBSystemAccountStoreAdapter.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Library/Math/vec4.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonUTF8Stream.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Library/Random/random.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/NSObject+SBJson.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBGraphObjectTableCell.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/main.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBDialogsData.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBGraphObjectPagingLoader.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBURLConnection.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBViewController.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBRequest.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBGraphObjectTableDataSource.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Graphics/Graphics.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Library/Math/vec3.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBAppBridgeTypeToJSONConverter.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Library/Math/vec2.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBDialogsParams.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBFrictionlessRecipientCache.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonTokeniser.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamWriter.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBTestSession.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBFrictionlessRequestSettings.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBUtility.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Game/GameController.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Library/Debug/debug.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBAppBridge.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBShareDialogParams.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Graphics/Sprite.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Game/ImageFetcher.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Graphics/GenericShaders.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBCacheDescriptor.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBLoginDialogParams.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/ViewController.mm", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBError.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Graphics/ShaderProgram.mm", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonWriter.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Game/GameController_FacebookIntegration.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBProfilePictureView.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamParser.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBFetchedAppSettings.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamParserAccumulator.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamParserState.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBAccessTokenData.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/Cryptography/FBCrypto.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBSession.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/Graphics/ConfettiEffect.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Classes/SBJsonStreamParserAdapter.m", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/Graphics/SpriteManager.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "friendSmasher/File/File.cpp", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "c++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBFriendPickerViewController.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBPlacePickerCacheDescriptor.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBAppLinkData.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBNativeDialogs.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/File/File_iPhoneCore.mm", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBInsights.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "friendSmasher/AppDelegate.mm", 
-            "header_paths": [], 
-            "flags": [], 
-            "language": "objc++", 
-            "defines": {}
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBGraphObject.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBSettings.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/Base64/FBBase64.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBLoginView.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/NSError+FBError.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBLoginDialog.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBErrorUtility.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBGraphObjectTableSelection.m", 
-            "language": "objc"
-        }, 
-        {
-            "source": "../facebook-ios-sdk/src/FBFriendPickerCacheDescriptor.m", 
-            "language": "objc"
-        }
-    ], 
-    "version": "1", 
     "flags": [
         "-DNS_BLOCK_ASSERTIONS=1", 
-        "-fwritable-strings", 
         "-fasm-blocks", 
         {
             "flag": "-std=gnu99", 
@@ -924,31 +213,742 @@
             "type": "objc"
         }
     ], 
+    "header_paths": [
+        {
+            "header_path": "friendSmasher-generated-files.hmap", 
+            "hmap": {}, 
+            "type": "iquote"
+        }, 
+        {
+            "header_path": "friendSmasher-own-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "friendSmasher-all-target-headers.hmap", 
+            "hmap": {}, 
+            "type": "I"
+        }, 
+        {
+            "header_path": "friendSmasher-project-headers.hmap", 
+            "hmap": {
+                "AppDelegate.h": {
+                    "key": "AppDelegate.h", 
+                    "prefix": "friendSmasher/", 
+                    "suffix": "AppDelegate.h"
+                }, 
+                "ConfettiEffect.h": {
+                    "key": "ConfettiEffect.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "ConfettiEffect.h"
+                }, 
+                "ConfettiEffect_OpenGLES2.h": {
+                    "key": "ConfettiEffect_OpenGLES2.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "ConfettiEffect_OpenGLES2.h"
+                }, 
+                "File.h": {
+                    "key": "File.h", 
+                    "prefix": "friendSmasher/File/", 
+                    "suffix": "File.h"
+                }, 
+                "File_iPhoneCore.h": {
+                    "key": "File_iPhoneCore.h", 
+                    "prefix": "friendSmasher/File/", 
+                    "suffix": "File_iPhoneCore.h"
+                }, 
+                "GameController.h": {
+                    "key": "GameController.h", 
+                    "prefix": "friendSmasher/Game/", 
+                    "suffix": "GameController.h"
+                }, 
+                "GenericShaders.h": {
+                    "key": "GenericShaders.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "GenericShaders.h"
+                }, 
+                "Graphics.h": {
+                    "key": "Graphics.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "Graphics.h"
+                }, 
+                "ImageFetcher.h": {
+                    "key": "ImageFetcher.h", 
+                    "prefix": "friendSmasher/Game/", 
+                    "suffix": "ImageFetcher.h"
+                }, 
+                "ImageFetcherDelegate.h": {
+                    "key": "ImageFetcherDelegate.h", 
+                    "prefix": "friendSmasher/Game/", 
+                    "suffix": "ImageFetcherDelegate.h"
+                }, 
+                "NSObject+SBJson.h": {
+                    "key": "NSObject+SBJson.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "NSObject+SBJson.h"
+                }, 
+                "SBJson.h": {
+                    "key": "SBJson.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJson.h"
+                }, 
+                "SBJsonParser.h": {
+                    "key": "SBJsonParser.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonParser.h"
+                }, 
+                "SBJsonStreamParser.h": {
+                    "key": "SBJsonStreamParser.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParser.h"
+                }, 
+                "SBJsonStreamParserAccumulator.h": {
+                    "key": "SBJsonStreamParserAccumulator.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParserAccumulator.h"
+                }, 
+                "SBJsonStreamParserAdapter.h": {
+                    "key": "SBJsonStreamParserAdapter.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParserAdapter.h"
+                }, 
+                "SBJsonStreamParserState.h": {
+                    "key": "SBJsonStreamParserState.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamParserState.h"
+                }, 
+                "SBJsonStreamWriter.h": {
+                    "key": "SBJsonStreamWriter.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamWriter.h"
+                }, 
+                "SBJsonStreamWriterAccumulator.h": {
+                    "key": "SBJsonStreamWriterAccumulator.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamWriterAccumulator.h"
+                }, 
+                "SBJsonStreamWriterState.h": {
+                    "key": "SBJsonStreamWriterState.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonStreamWriterState.h"
+                }, 
+                "SBJsonTokeniser.h": {
+                    "key": "SBJsonTokeniser.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonTokeniser.h"
+                }, 
+                "SBJsonUTF8Stream.h": {
+                    "key": "SBJsonUTF8Stream.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonUTF8Stream.h"
+                }, 
+                "SBJsonWriter.h": {
+                    "key": "SBJsonWriter.h", 
+                    "prefix": "friendSmasher/Classes/", 
+                    "suffix": "SBJsonWriter.h"
+                }, 
+                "ShaderProgram.h": {
+                    "key": "ShaderProgram.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "ShaderProgram.h"
+                }, 
+                "Sprite.h": {
+                    "key": "Sprite.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "Sprite.h"
+                }, 
+                "SpriteManager.h": {
+                    "key": "SpriteManager.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "SpriteManager.h"
+                }, 
+                "TextureResource.h": {
+                    "key": "TextureResource.h", 
+                    "prefix": "friendSmasher/Graphics/", 
+                    "suffix": "TextureResource.h"
+                }, 
+                "ViewController.h": {
+                    "key": "ViewController.h", 
+                    "prefix": "friendSmasher/", 
+                    "suffix": "ViewController.h"
+                }, 
+                "debug.h": {
+                    "key": "debug.h", 
+                    "prefix": "friendSmasher/Library/Debug/", 
+                    "suffix": "debug.h"
+                }, 
+                "friendSmasher-Prefix.pch": {
+                    "key": "friendSmasher-Prefix.pch", 
+                    "prefix": "friendSmasher/", 
+                    "suffix": "friendSmasher-Prefix.pch"
+                }, 
+                "math_def.h": {
+                    "key": "math_def.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "math_def.h"
+                }, 
+                "math_lib.h": {
+                    "key": "math_lib.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "math_lib.h"
+                }, 
+                "math_op.h": {
+                    "key": "math_op.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "math_op.h"
+                }, 
+                "mtx33.h": {
+                    "key": "mtx33.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx33.h"
+                }, 
+                "mtx33_op.h": {
+                    "key": "mtx33_op.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx33_op.h"
+                }, 
+                "mtx44.h": {
+                    "key": "mtx44.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx44.h"
+                }, 
+                "mtx44_op.h": {
+                    "key": "mtx44_op.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "mtx44_op.h"
+                }, 
+                "null.h": {
+                    "key": "null.h", 
+                    "prefix": "friendSmasher/Library/Null/", 
+                    "suffix": "null.h"
+                }, 
+                "random.h": {
+                    "key": "random.h", 
+                    "prefix": "friendSmasher/Library/Random/", 
+                    "suffix": "random.h"
+                }, 
+                "type_defs.h": {
+                    "key": "type_defs.h", 
+                    "prefix": "friendSmasher/Library/Definitions/", 
+                    "suffix": "type_defs.h"
+                }, 
+                "vec2.h": {
+                    "key": "vec2.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec2.h"
+                }, 
+                "vec2_op.h": {
+                    "key": "vec2_op.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec2_op.h"
+                }, 
+                "vec3.h": {
+                    "key": "vec3.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec3.h"
+                }, 
+                "vec3_op.h": {
+                    "key": "vec3_op.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec3_op.h"
+                }, 
+                "vec4.h": {
+                    "key": "vec4.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec4.h"
+                }, 
+                "vec4_op.h": {
+                    "key": "vec4_op.h", 
+                    "prefix": "friendSmasher/Library/Math/", 
+                    "suffix": "vec4_op.h"
+                }
+            }, 
+            "type": "iquote"
+        }, 
+        "..", 
+        "../facebook-ios-sdk/src", 
+        "../facebook-ios-sdk/src/Base64", 
+        "../facebook-ios-sdk/src/Cryptography"
+    ], 
     "infoplists": [
         "./friendSmasher/friendSmasher-Info.plist"
     ], 
-    "deps": [
-        "UIKit", 
-        "UIKit", 
-        "Foundation", 
-        "CoreGraphics", 
-        "GLKit", 
-        "OpenGLES", 
-        "Accounts", 
-        "AdSupport", 
-        "CoreLocation", 
-        "Social", 
-        "sqlite"
-    ], 
+    "java_libs": [], 
+    "java_res_dirs": [], 
+    "java_sourcepaths": [], 
+    "java_sources": [], 
     "libs": [
         "sqlite3.0"
     ], 
-    "java_sourcepaths": [], 
-    "java_res_dirs": [], 
+    "link_flags": [], 
+    "modules": [], 
+    "pchs": [
+        "./friendSmasher/friendSmasher-Prefix.pch"
+    ], 
+    "sources": [
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBFetchedAppSettings.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBURLConnection.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/Facebook.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBSessionInsightsState.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/Game/GameController_FacebookIntegration.cpp"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Graphics/ConfettiEffect_OpenGLES2.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBPlacePickerCacheDescriptor.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBGraphObjectTableCell.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBDialogs.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/File/File.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/Base64/FBBase64.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBAppCall.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/NSObject+SBJson.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Debug/debug.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBUtility.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBLoginView.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBDialogsData.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBSettings.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBLogger.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamParserState.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamWriterAccumulator.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/NSError+FBError.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonParser.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBLoginDialogParams.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBAppLinkData.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBViewController.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBTestSession.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamParser.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonWriter.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Graphics/SpriteManager.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBNativeDialogs.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/main.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBFrictionlessRequestSettings.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Graphics/Sprite.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBFriendPickerCacheDescriptor.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonTokeniser.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBShareDialogParams.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Math/mtx33.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBSystemAccountStoreAdapter.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBCacheIndex.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBFrictionlessRecipientCache.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBError.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBGraphObjectTableSelection.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBSessionManualTokenCachingStrategy.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBDialogsParams.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/Cryptography/FBCrypto.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamParserAccumulator.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/Graphics/ShaderProgram.mm"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBCacheDescriptor.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Math/vec2.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBRequestBody.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Random/random.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBErrorUtility.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/Game/GameController.cpp"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Graphics/GenericShaders.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBDataDiskCache.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBAppBridgeTypeToJSONConverter.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBRequest.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBWebDialogs.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBProfilePictureView.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamWriterState.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/AppDelegate.mm"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Graphics/ConfettiEffect.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBLoginDialog.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Math/mtx44.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBAppBridge.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBRequestConnection.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/ViewController.mm"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Math/vec4.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBSessionTokenCachingStrategy.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonUTF8Stream.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBAccessTokenData.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamParserAdapter.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Graphics/Graphics.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBOpenGraphActionShareDialogParams.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBGraphObject.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBGraphObjectPagingLoader.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBPlacePickerViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Game/ImageFetcher.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBUserSettingsViewController.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/Graphics/TextureResource.cpp"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc", 
+            "source": "friendSmasher/Classes/SBJsonStreamWriter.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBInsights.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "c++", 
+            "source": "friendSmasher/Library/Math/vec3.cpp"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBFriendPickerViewController.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBGraphObjectTableDataSource.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBDialog.m"
+        }, 
+        {
+            "language": "objc", 
+            "source": "../facebook-ios-sdk/src/FBSession.m"
+        }, 
+        {
+            "defines": {}, 
+            "flags": [], 
+            "header_paths": [], 
+            "language": "objc++", 
+            "source": "friendSmasher/File/File_iPhoneCore.mm"
+        }
+    ], 
     "type": "app", 
-    "java_libs": [], 
-    "defines": {
-        "__IPHONE_OS_VERSION_MIN_REQUIRED": 50100, 
-        "NS_BLOCK_ASSERTIONS": 1
-    }
+    "version": "1", 
+    "xcode_project": "friendSmasher.xcodeproj"
 }
