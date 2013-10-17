@@ -536,7 +536,14 @@ namespace FriendSmasher
 
                         itr = m_vecEntities.begin();
                         end = m_vecEntities.end();
-                        continue;
+                        if (itr == end)
+                        {
+                            break;
+                        }
+                        else
+                        {
+                            continue;
+                        }
                     }
                     
                     if (m_bTouched[0] && !m_bTouchedLastFrame[0] && pCurrentEntity->pSprite->IsPointInside(m_vBeginTouchPos[0], 25.f)) 
@@ -568,7 +575,17 @@ namespace FriendSmasher
                             
                             itr = m_vecEntities.begin();
                             end = m_vecEntities.end();
-                            continue;
+                            /* If you are resetting the iterators in the loop you must re-check if we are at the completion state, otherwise
+                             * the itr is incrememnted and could go past the end which will lead to deleting random memory and crashing.
+                             */
+                            if (itr == end)
+                            {
+                                break;
+                            }
+                            else
+                            {
+                            	continue;
+                            }
                         }
                     }
                 }
