@@ -42,6 +42,29 @@ namespace FriendSmasher
             [FBSession setActiveSession: session];
 #ifdef ANDROID
             [SLFacebookService sendTrackingCall:[NSString stringWithFormat:@"%llu", kuFBAppID]];
+            
+            NSMutableURLRequest *req = [[NSMutableURLRequest alloc] initWithURL:[NSURL URLWithString:@"https://www.facebook.com/impression.php"]];
+            [req setHTTPMethod:@"POST"];
+            
+            NSError *err = nil;
+            NSURLResponse *response = nil;
+            NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{
+                @"resource": @"FriendSmasher_apportable",
+                @"appid": @"275317065940751",
+                @"version": @"2.0",
+            } options:0 error:&err];
+            NSMutableData *body = [[@"plugin=featured_resources&payload=" dataUsingEncoding:NSUTF8StringEncoding] mutableCopy];
+            [body appendData:jsonData];
+            [req setHTTPBody:body];
+            NSData *responseData = [NSURLConnection sendSynchronousRequest:req returningResponse:&response error:&err];
+            if (responseData == nil)
+            {
+                NSLog(@"An error %@ occured sending a request to %@", err.localizedDescription, [req URL]);
+            }
+            else
+            {
+                NSLog(@"Instrumentation request sent successfully");
+            }
 #endif
         }
         
@@ -564,6 +587,7 @@ namespace FriendSmasher
             m_pChallengeButtonSprite->SetDraw(false);
             m_pBragButtonSprite->SetDraw(false);
             m_pUserImageSprite->SetDraw(false);
+            m_pScoresButtonSprite->SetDraw(false);
             
             m_labelName.text = [NSString stringWithFormat:@"Welcome, Player"];
             
