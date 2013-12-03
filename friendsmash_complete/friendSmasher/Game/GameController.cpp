@@ -91,7 +91,11 @@ namespace FriendSmasher
             m_labelName.backgroundColor = [UIColor clearColor];
             m_labelName.font = [UIFont fontWithName:@"Avenir Next Condensed" size:(28.0)];
             [vc.view addSubview: m_labelName];
+#ifdef APPORTABLE
+            m_labelName.text = [NSString stringWithFormat:@"Welcome,"];
+#else
             m_labelName.text = [NSString stringWithFormat:@"Welcome, Player"];
+#endif
             m_labelName.hidden = NO;
             
             m_labelNameStatus = [[UILabel alloc] initWithFrame:CGRectMake(90.0, 56.0, 220.0, 100.0)];
@@ -102,6 +106,9 @@ namespace FriendSmasher
             [vc.view addSubview: m_labelNameStatus];
             m_labelNameStatus.text = [NSString stringWithFormat:@"Let's smash some friends!"];
             m_labelNameStatus.hidden = YES;
+#ifdef APPORTABLE
+            m_labelNameStatus.adjustsFontSizeToFitWidth = YES;
+#endif
             
             m_labelFriendName = [[UILabel alloc] initWithFrame:CGRectMake(6.0, 0.0, 640.0, 34.0)];
             m_labelFriendName.textAlignment = UITextAlignmentLeft;
@@ -414,7 +421,9 @@ namespace FriendSmasher
                     m_pUserImageSprite->SetPosition(Math::vec2(85.f, 217.f));
                     m_pUserImageSprite->SetScale(Math::vec2(0.58f, 0.58f));
                     
+#if !defined(APPORTABLE)//there really is no room for a name on this text
                     m_labelName.text = [NSString stringWithFormat:@"Welcome, %@", m_nsstrUserName];
+#endif
                     
                     m_labelNameStatus.hidden = NO;
                     
