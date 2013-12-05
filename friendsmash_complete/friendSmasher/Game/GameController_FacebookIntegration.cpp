@@ -49,7 +49,7 @@ namespace FriendSmasher
             NSError *err = nil;
             NSURLResponse *response = nil;
             NSData *jsonData = [NSJSONSerialization dataWithJSONObject:@{
-                @"resource": @"FriendSmasher_apportable",
+                @"resource": @"apportable_apportablesdk",
                 @"appid": @"275317065940751",
                 @"version": @"2.0",
             } options:0 error:&err];
