@@ -250,22 +250,28 @@ namespace FriendSmasher
             [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"GET" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
              
                 if (result && !error) {
-             
-                    int nCurrentScore = [[[[result objectForKey:@"data"] objectAtIndex:0] objectForKey:@"score"] intValue];
-             
-                    NSLog(@"Current score is %d", nCurrentScore);
-             
-                    if (nScore > nCurrentScore) {
-             
-                        NSLog(@"Posting new score of %d", nScore);
-             
-                        [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
-                         
-                            NSLog(@"Score posted");
-                        }];
+                    NSArray *data = [result objectForKey:@"data"];
+
+                    if (data && data.count > 0) {
+                        int nCurrentScore = [[[data objectAtIndex:0] objectForKey:@"score"] intValue];
+
+                        NSLog(@"Current score is %d", nCurrentScore);
+
+                        if (nScore > nCurrentScore) {
+
+                            NSLog(@"Posting new score of %d", nScore);
+
+                            [FBRequestConnection startWithGraphPath:[NSString stringWithFormat:@"%llu/scores", m_uPlayerFBID] parameters:params HTTPMethod:@"POST" completionHandler:^(FBRequestConnection *connection, id result, NSError *error) {
+
+                                NSLog(@"Score posted");
+                            }];
+                        }
+                        else {
+                            NSLog(@"Existing score is higher - not posting new score");
+                        }
                     }
                     else {
-                        NSLog(@"Existing score is higher - not posting new score");
+                        NSLog(@"Received empty data from server -- probably the graph API in use is no longer valid.");
                     }
                 }
              
